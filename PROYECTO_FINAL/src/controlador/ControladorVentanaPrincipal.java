@@ -31,6 +31,7 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 		ventana.getAliasTexto().addMouseListener(this);
 		ventana.getContraseñaTexto().addMouseListener(this);
 		ventana.getBotonInicioSesion().addActionListener(this);
+		ventana.getBotonRegistro().addActionListener(this);
 		ventana.setVisible(true);
 	}
 
@@ -57,24 +58,35 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 				// Por ejemplo, crear una instancia de la ventana de inicio de sesión exitoso y
 				// mostrarla
 				JOptionPane.showMessageDialog(null, "INICIO DE SESION SATISFACTORIO.");
+
 			} else {
 				// Mostrar mensaje de error de inicio de sesión
 				JOptionPane.showMessageDialog(ventana, "Credenciales de inicio de sesión inválidas",
 						"Error de inicio de sesión", JOptionPane.ERROR_MESSAGE);
+			}
+
+		}
+		if (e.getSource() == ventana.getBotonRegistro()) {
+			System.out.println("Se ha pulsado el boton registro");
+			try {
+				new ControladorVentanaCreacionUsuario(operacionesUsu);
+
+			} catch (Exception e2) {
+				// TODO: handle exception
 			}
 		}
 	}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if (e.getSource() == ventana.getAliasTexto()) {
+		if (e.getSource() == ventana.getAliasTexto() || ventana.getAliasTexto().getText().equals("")) {
 			if (ventana.getAliasTexto().getText().equals("👤Usuario")) {
 				ventana.getAliasTexto().setText("");
 				ventana.getAliasTexto().setForeground(Color.BLACK);
 			}
 
 		}
-		if (e.getSource() == ventana.getContraseñaTexto()) {
+		if (e.getSource() == ventana.getContraseñaTexto() || ventana.getContraseñaTexto().getPassword().equals("")) {
 			JPasswordField contraseñaTexto = ventana.getContraseñaTexto();
 			if (String.valueOf(contraseñaTexto.getPassword()).equals("🔒Contraseña")) {
 				contraseñaTexto.setText("");

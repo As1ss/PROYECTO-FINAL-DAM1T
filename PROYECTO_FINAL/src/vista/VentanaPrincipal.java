@@ -11,6 +11,8 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -19,6 +21,8 @@ public class VentanaPrincipal extends JFrame {
 	private JTextField aliasTexto;
 
 	private JButton botonInicioSesion;
+	private JLabel inicioLabel;
+	private JButton botonRegistro;
 
 	/**
 	 * Launch the application.
@@ -49,18 +53,38 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 
 		botonInicioSesion = new JButton("Iniciar sesi\u00F3n");
-		botonInicioSesion.setBounds(122, 170, 177, 23);
+		botonInicioSesion.setFont(new Font("Arial", Font.PLAIN, 11));
+		botonInicioSesion.setBounds(104, 165, 103, 23);
 		contentPane.add(botonInicioSesion);
 
 		aliasTexto = new JTextField();
 		aliasTexto.setForeground(new Color(192, 192, 192));
-		aliasTexto.setBounds(122, 64, 177, 31);
+		aliasTexto.setBounds(104, 64, 222, 31);
 		contentPane.add(aliasTexto);
 
 		contraseñaTexto = new JPasswordField();
-		contraseñaTexto.setBounds(122, 110, 177, 31);
+		contraseñaTexto.setBounds(104, 109, 222, 31);
 		contentPane.add(contraseñaTexto);
 
+		inicioLabel = new JLabel("Centro Civico");
+		inicioLabel.setFont(new Font("Arial", Font.PLAIN, 15));
+		inicioLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		inicioLabel.setBounds(132, 11, 156, 42);
+		contentPane.add(inicioLabel);
+
+		botonRegistro = new JButton("Registrarse");
+		botonRegistro.setFont(new Font("Arial", Font.PLAIN, 11));
+		botonRegistro.setBounds(223, 165, 103, 23);
+		contentPane.add(botonRegistro);
+
+	}
+
+	public JButton getBotonRegistro() {
+		return botonRegistro;
+	}
+
+	public void setBotonRegistro(JButton botonRegistro) {
+		this.botonRegistro = botonRegistro;
 	}
 
 	public JButton getBotonInicioSesion() {

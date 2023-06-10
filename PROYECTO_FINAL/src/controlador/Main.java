@@ -6,7 +6,7 @@ public class Main {
 		try {
 			new ControladorVentanaPrincipal();
 		} catch (Exception e) {
-			
+
 		}
 
 	}

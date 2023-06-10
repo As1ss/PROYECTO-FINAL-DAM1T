@@ -18,6 +18,7 @@ public class OperacionesUsuario {
 
 	public OperacionesUsuario() {
 		file = new File(archivoUsuarios);
+		usuarios = new HashMap<String, Usuario>();
 		guardarUsuarios();
 
 	}
@@ -47,7 +48,6 @@ public class OperacionesUsuario {
 	}
 
 	public void guardarUsuarios() {
-		usuarios = new HashMap<String, Usuario>();
 		agregarUsuario("Admin", "1234", "", "");
 
 		try {
@@ -67,6 +67,7 @@ public class OperacionesUsuario {
 	public void agregarUsuario(String alias, String contraseña, String nombre, String direccion) {
 		Usuario usuario = new Usuario(alias, contraseña, nombre, direccion);
 		usuarios.put(usuario.getAlias(), usuario);
+
 	}
 
 	public HashMap<String, Usuario> getListaUsuarios() {
