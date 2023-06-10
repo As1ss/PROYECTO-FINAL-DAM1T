@@ -8,6 +8,7 @@ public class OperacionesAdministrador {
 	private HashMap<Integer, Libro> libros;
 
 	public OperacionesAdministrador() {
+	
 		libros = new HashMap<>();
 	}
 

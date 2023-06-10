@@ -1,6 +1,8 @@
 package modelo;
 
-public class Usuario {
+import java.io.Serializable;
+
+public class Usuario implements Serializable {
 	private String alias;
 	private String contraseña;
 	private String nombre;
@@ -16,7 +18,6 @@ public class Usuario {
 		disponibilidadPrestamo = true;
 
 	}
-
 
 	public void agregarLibroPrestado(Libro libro) {
 		this.libroPrestado = libro;
