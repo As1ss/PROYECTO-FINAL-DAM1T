@@ -53,8 +53,8 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setLayout(null);
 
 		botonInicioSesion = new JButton("Iniciar sesi\u00F3n");
-		botonInicioSesion.setFont(new Font("Arial", Font.PLAIN, 11));
-		botonInicioSesion.setBounds(104, 165, 103, 23);
+		botonInicioSesion.setFont(new Font("Arial", Font.PLAIN, 12));
+		botonInicioSesion.setBounds(104, 165, 115, 23);
 		contentPane.add(botonInicioSesion);
 
 		aliasTexto = new JTextField();
@@ -73,7 +73,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(inicioLabel);
 
 		botonRegistro = new JButton("Registrarse");
-		botonRegistro.setFont(new Font("Arial", Font.PLAIN, 11));
+		botonRegistro.setFont(new Font("Arial", Font.PLAIN, 12));
 		botonRegistro.setBounds(223, 165, 103, 23);
 		contentPane.add(botonRegistro);
 

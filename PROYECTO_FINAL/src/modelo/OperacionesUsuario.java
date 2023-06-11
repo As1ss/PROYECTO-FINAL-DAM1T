@@ -30,12 +30,7 @@ public class OperacionesUsuario {
 
 			// Leer el HashMap del archivo
 			HashMap<String, Usuario> hashMap = (HashMap<String, Usuario>) objectInputStream.readObject();
-
 			objectInputStream.close();
-			System.out.println("HashMap leído del archivo: " + hashMap);
-			Usuario usu = hashMap.get("Admin");
-			System.out.println(usu.getAlias());
-			System.out.println(usu.getContraseña());
 
 			return hashMap;
 		} catch (FileNotFoundException e) {
@@ -55,9 +50,7 @@ public class OperacionesUsuario {
 			ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
 			objectOutputStream.writeObject(usuarios);
-
 			objectOutputStream.close();
-			System.out.println("El HashMap se agregó correctamente al archivo.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -55,9 +55,15 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 			Usuario usuario = usuariosAlmacenados.get(alias);
 			if (usuario != null && usuario.getContraseña().equals(contraseña)) {
 				// Iniciar la nueva ventana aquí
-				// Por ejemplo, crear una instancia de la ventana de inicio de sesión exitoso y
-				// mostrarla
+				// Puede variar segun las credenciales sean de Administración o cualesquiera otras
 				JOptionPane.showMessageDialog(null, "INICIO DE SESION SATISFACTORIO.");
+				if (usuario.getAlias().equalsIgnoreCase("Admin") && usuario.getContraseña().equalsIgnoreCase("1234")) {
+					try {
+						new ControladorVentanaAdministrador();
+					} catch (Exception e2) {
+						// TODO: handle exception
+					}
+				}
 
 			} else {
 				// Mostrar mensaje de error de inicio de sesión
