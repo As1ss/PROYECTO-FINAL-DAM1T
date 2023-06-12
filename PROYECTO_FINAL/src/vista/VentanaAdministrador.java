@@ -3,92 +3,230 @@ package vista;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import modelo.Libro;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class VentanaAdministrador extends JFrame {
 
-    private JPanel contentPane;
-    private JPanel panelPrincipal;
-    private JPanel panel1;
-    private JPanel panel2;
-    private JPanel panel3;
-    private CardLayout cardLayout;
+	private JPanel contentPane;
+	private JPanel panelPrincipal;
+	private JPanel panelConsulta;
+	private JPanel panelAñadir;
+	private JPanel panelModificar;
+	private CardLayout cardLayout;
+	private JLabel imagenLibro;
+	private JButton botonAnterior;
+	private JButton botonSiguiente;
+	private JLabel labelTitulo;
+	private JLabel labelEditorial;
+	private JLabel labelAutor;
+	private JLabel labelEjemplares;
+	private JLabel labelEstado;
+	private JButton botonConsultar;
+	private JButton botonAñadir;
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    VentanaAdministrador frame = new VentanaAdministrador();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+	private JButton botonModificar;
 
-    public VentanaAdministrador() {
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
-        contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        setContentPane(contentPane);
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					VentanaAdministrador frame = new VentanaAdministrador();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
-        // Crear el CardLayout y el panel principal
-        cardLayout = new CardLayout();
-        panelPrincipal = new JPanel(cardLayout);
-        contentPane.setLayout(new BorderLayout());
-        contentPane.add(panelPrincipal, BorderLayout.CENTER);
+	public VentanaAdministrador() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
 
-        // Crear los paneles secundarios
-        panel1 = new JPanel();
-        panel1.setBackground(Color.RED);
-        panelPrincipal.add(panel1, "Panel 1");
-        panel1.setLayout(null);
-        
-        JList list = new JList();
-        list.setBounds(93, 35, 226, 135);
-        panel1.add(list);
+		// Crear el CardLayout y el panel principal
+		cardLayout = new CardLayout();
+		panelPrincipal = new JPanel(cardLayout);
+		contentPane.setLayout(new BorderLayout());
+		contentPane.add(panelPrincipal, BorderLayout.CENTER);
 
-        panel2 = new JPanel();
-        panel2.setBackground(Color.GREEN);
-        panelPrincipal.add(panel2, "Panel 2");
+		// Crear los paneles secundarios
+		panelConsulta = new JPanel();
+		panelConsulta.setBackground(new Color(255, 255, 255));
+		panelPrincipal.add(panelConsulta, "panelConsultar");
+		panelConsulta.setLayout(null);
 
-        panel3 = new JPanel();
-        panel3.setBackground(Color.BLUE);
-        panelPrincipal.add(panel3, "Panel 3");
+		imagenLibro = new JLabel();
+		imagenLibro.setBounds(31, 11, 122, 142);
+		Libro test = new Libro("Libro1", "Pepe", "PepeProductions", 5, "Buen estado");
+		imagenLibro.setIcon(test.getImg());
+		panelConsulta.add(imagenLibro);
 
-        // Crear los botones de navegación
-        JButton btnPanel1 = new JButton("Panel 1");
-        JButton btnPanel2 = new JButton("Panel 2");
-        JButton btnPanel3 = new JButton("Panel 3");
+		botonAnterior = new JButton("<=");
+		botonAnterior.setBounds(15, 164, 66, 23);
+		panelConsulta.add(botonAnterior);
 
-        // Agregar los botones al panel principal
-        JPanel panelBotones = new JPanel();
-        panelBotones.add(btnPanel1);
-        panelBotones.add(btnPanel2);
-        panelBotones.add(btnPanel3);
-        contentPane.add(panelBotones, BorderLayout.NORTH);
+		botonSiguiente = new JButton("=>");
+		botonSiguiente.setBounds(87, 164, 66, 23);
+		panelConsulta.add(botonSiguiente);
 
-        // Asignar acciones a los botones
-        btnPanel1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(panelPrincipal, "Panel 1");
-            }
-        });
+		labelTitulo = new JLabel("Ttulo: ");
+		labelTitulo.setBounds(222, 23, 177, 14);
+		panelConsulta.add(labelTitulo);
 
-        btnPanel2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(panelPrincipal, "Panel 2");
-            }
-        });
+		labelEditorial = new JLabel("Editorial:");
+		labelEditorial.setBounds(222, 96, 177, 14);
+		panelConsulta.add(labelEditorial);
 
-        btnPanel3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                cardLayout.show(panelPrincipal, "Panel 3");
-            }
-        });
-    }
+		labelAutor = new JLabel("Autor: ");
+		labelAutor.setBounds(222, 58, 177, 14);
+		panelConsulta.add(labelAutor);
+
+		labelEjemplares = new JLabel("Ejemplares: ");
+		labelEjemplares.setBounds(222, 133, 177, 14);
+		panelConsulta.add(labelEjemplares);
+
+		labelEstado = new JLabel("Estado: ");
+		labelEstado.setBounds(222, 173, 177, 14);
+		panelConsulta.add(labelEstado);
+
+		panelAñadir = new JPanel();
+		panelAñadir.setBackground(Color.GREEN);
+		panelPrincipal.add(panelAñadir, "panelAñadir");
+
+		panelModificar = new JPanel();
+		panelModificar.setBackground(Color.BLUE);
+		panelPrincipal.add(panelModificar, "panelModificar");
+
+		botonConsultar = new JButton("Consultar");
+		botonAñadir = new JButton("A\u00F1adir");
+		botonModificar = new JButton("Modificar");
+
+		// Agregar los botones al panel principal
+		JPanel panelBotones = new JPanel();
+		panelBotones.add(botonConsultar);
+		panelBotones.add(botonAñadir);
+		panelBotones.add(botonModificar);
+		contentPane.add(panelBotones, BorderLayout.NORTH);
+
+	}
+
+	public JPanel getPanelAñadir() {
+		return panelAñadir;
+	}
+
+	public void setPanelAñadir(JPanel panelAñadir) {
+		this.panelAñadir = panelAñadir;
+	}
+
+	public CardLayout getCardLayout() {
+		return cardLayout;
+	}
+
+	public void setCardLayout(CardLayout cardLayout) {
+		this.cardLayout = cardLayout;
+	}
+
+	public JLabel getImagenLibro() {
+		return imagenLibro;
+	}
+
+	public void setImagenLibro(JLabel imagenLibro) {
+		this.imagenLibro = imagenLibro;
+	}
+
+	public JButton getBotonAnterior() {
+		return botonAnterior;
+	}
+
+	public void setBotonAnterior(JButton botonAnterior) {
+		this.botonAnterior = botonAnterior;
+	}
+
+	public JButton getBotonSiguiente() {
+		return botonSiguiente;
+	}
+
+	public void setBotonSiguiente(JButton botonSiguiente) {
+		this.botonSiguiente = botonSiguiente;
+	}
+
+	public JLabel getLabelTitulo() {
+		return labelTitulo;
+	}
+
+	public void setLabelTitulo(JLabel labelTitulo) {
+		this.labelTitulo = labelTitulo;
+	}
+
+	public JLabel getLabelEditorial() {
+		return labelEditorial;
+	}
+
+	public void setLabelEditorial(JLabel labelEditorial) {
+		this.labelEditorial = labelEditorial;
+	}
+
+	public JLabel getLabelAutor() {
+		return labelAutor;
+	}
+
+	public void setLabelAutor(JLabel labelAutor) {
+		this.labelAutor = labelAutor;
+	}
+
+	public JLabel getLabelEjemplares() {
+		return labelEjemplares;
+	}
+
+	public void setLabelEjemplares(JLabel labelEjemplares) {
+		this.labelEjemplares = labelEjemplares;
+	}
+
+	public JLabel getLabelEstado() {
+		return labelEstado;
+	}
+
+	public void setLabelEstado(JLabel labelEstado) {
+		this.labelEstado = labelEstado;
+	}
+
+	public JButton getBotonConsultar() {
+		return botonConsultar;
+	}
+
+	public void setBotonConsultar(JButton botonConsultar) {
+		this.botonConsultar = botonConsultar;
+	}
+
+	public JButton getBotonAñadir() {
+		return botonAñadir;
+	}
+
+	public void setBotonAñadir(JButton botonAñadir) {
+		this.botonAñadir = botonAñadir;
+	}
+
+	public JButton getBotonModificar() {
+		return botonModificar;
+	}
+
+	public void setBotonModificar(JButton botonModificar) {
+		this.botonModificar = botonModificar;
+	}
+
+	public JPanel getPanelPrincipal() {
+		return panelPrincipal;
+	}
+
+	public void setPanelPrincipal(JPanel panelPrincipal) {
+		this.panelPrincipal = panelPrincipal;
+	}
+
 }
