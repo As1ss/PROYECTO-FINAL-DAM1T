@@ -29,6 +29,20 @@ public class VentanaAdministrador extends JFrame {
 	private JButton botonAñadir;
 
 	private JButton botonModificar;
+	
+	private JLabel imagenLibroAñadir;
+	private JLabel labelTituloAñadir;
+	private JLabel labelEditorialAñadir;
+	private JLabel labelAutorAñadir;
+	private JLabel labelEjemplaresAñadir;
+	private JButton btnSelectImagen;
+	private JLabel lblDirImagen;
+	private JButton btnGuardar;
+	private JButton btnLimpiar;
+	private JTextField tftTitulo;
+	private JTextField tftAutor;
+	private JTextField tftEditorial;
+	private JTextField tftEjemplares;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -97,8 +111,71 @@ public class VentanaAdministrador extends JFrame {
 		panelConsulta.add(labelEstado);
 
 		panelAñadir = new JPanel();
-		panelAñadir.setBackground(Color.GREEN);
+		panelAñadir.setBackground(Color.WHITE);
 		panelPrincipal.add(panelAñadir, "panelAñadir");
+		panelAñadir.setLayout(null);
+		
+		imagenLibroAñadir = new JLabel();
+		imagenLibroAñadir.setIcon(test.getImg());
+		imagenLibroAñadir.setBounds(26, 11, 122, 142);
+		panelAñadir.add(imagenLibroAñadir);
+		
+		labelTituloAñadir = new JLabel("Título: ");
+		labelTituloAñadir.setBounds(217, 23, 177, 14);
+		panelAñadir.add(labelTituloAñadir);
+		
+		labelEditorialAñadir = new JLabel("Editorial:");
+		labelEditorialAñadir.setBounds(217, 96, 177, 14);
+		panelAñadir.add(labelEditorialAñadir);
+		
+		labelAutorAñadir = new JLabel("Autor: ");
+		labelAutorAñadir.setBounds(217, 58, 177, 14);
+		panelAñadir.add(labelAutorAñadir);
+		
+		labelEjemplaresAñadir = new JLabel("Ejemplares: ");
+		labelEjemplaresAñadir.setBounds(217, 133, 177, 14);
+		panelAñadir.add(labelEjemplaresAñadir);
+		
+		btnSelectImagen = new JButton("Seleccionar imagen");
+		btnSelectImagen.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnSelectImagen.setBounds(26, 169, 122, 23);
+		panelAñadir.add(btnSelectImagen);
+		
+		lblDirImagen = new JLabel(imagenLibroAñadir.getIcon().toString());
+		lblDirImagen.setEnabled(false);
+		lblDirImagen.setBounds(26, 193, 231, 14);
+		panelAñadir.add(lblDirImagen);
+		
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(325, 173, 89, 34);
+		panelAñadir.add(btnGuardar);
+		
+		btnLimpiar = new JButton("");
+		btnLimpiar.setIcon(new ImageIcon("src/images/Limpiar.png"));
+	
+	
+		btnLimpiar.setBounds(284, 173, 35, 34);
+		panelAñadir.add(btnLimpiar);
+		
+		tftTitulo = new JTextField();
+		tftTitulo.setBounds(256, 20, 138, 20);
+		panelAñadir.add(tftTitulo);
+		tftTitulo.setColumns(10);
+		
+		tftAutor = new JTextField();
+		tftAutor.setColumns(10);
+		tftAutor.setBounds(256, 55, 138, 20);
+		panelAñadir.add(tftAutor);
+		
+		tftEditorial = new JTextField();
+		tftEditorial.setColumns(10);
+		tftEditorial.setBounds(276, 93, 118, 20);
+		panelAñadir.add(tftEditorial);
+		
+		tftEjemplares = new JTextField();
+		tftEjemplares.setColumns(10);
+		tftEjemplares.setBounds(298, 130, 96, 20);
+		panelAñadir.add(tftEjemplares);
 
 		panelModificar = new JPanel();
 		panelModificar.setBackground(Color.BLUE);
@@ -229,4 +306,57 @@ public class VentanaAdministrador extends JFrame {
 		this.panelPrincipal = panelPrincipal;
 	}
 
+	public JTextField getTftTitulo() {
+		return tftTitulo;
+	}
+
+	public JTextField getTftAutor() {
+		return tftAutor;
+	}
+
+	public JTextField getTftEditorial() {
+		return tftEditorial;
+	}
+
+	public JTextField getTftEjemplares() {
+		return tftEjemplares;
+	}
+
+	public JLabel getImagenLibroAñadir() {
+		return imagenLibroAñadir;
+	}
+
+	public JLabel getLabelTituloAñadir() {
+		return labelTituloAñadir;
+	}
+
+	public JLabel getLabelEditorialAñadir() {
+		return labelEditorialAñadir;
+	}
+
+	public JLabel getLabelAutorAñadir() {
+		return labelAutorAñadir;
+	}
+
+	public JLabel getLabelEjemplaresAñadir() {
+		return labelEjemplaresAñadir;
+	}
+
+	public JButton getBtnSelectImagen() {
+		return btnSelectImagen;
+	}
+
+	public JLabel getLblDirImagen() {
+		return lblDirImagen;
+	}
+
+	public JButton getBtnGuardar() {
+		return btnGuardar;
+	}
+
+	public JButton getBtnLimpiar() {
+		return btnLimpiar;
+	}
+	
 }
+
