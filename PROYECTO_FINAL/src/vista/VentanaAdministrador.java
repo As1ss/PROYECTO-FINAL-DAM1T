@@ -29,7 +29,7 @@ public class VentanaAdministrador extends JFrame {
 	private JButton botonAñadir;
 
 	private JButton botonModificar;
-	
+
 	private JLabel imagenLibroAñadir;
 	private JLabel labelTituloAñadir;
 	private JLabel labelEditorialAñadir;
@@ -37,6 +37,7 @@ public class VentanaAdministrador extends JFrame {
 	private JLabel labelEjemplaresAñadir;
 	private JButton btnSelectImagen;
 	private JLabel lblDirImagen;
+
 	private JButton btnGuardar;
 	private JButton btnLimpiar;
 	private JTextField tftTitulo;
@@ -114,64 +115,63 @@ public class VentanaAdministrador extends JFrame {
 		panelAñadir.setBackground(Color.WHITE);
 		panelPrincipal.add(panelAñadir, "panelAñadir");
 		panelAñadir.setLayout(null);
-		
+
 		imagenLibroAñadir = new JLabel();
 		imagenLibroAñadir.setIcon(test.getImg());
 		imagenLibroAñadir.setBounds(26, 11, 122, 142);
 		panelAñadir.add(imagenLibroAñadir);
-		
+
 		labelTituloAñadir = new JLabel("Título: ");
 		labelTituloAñadir.setBounds(217, 23, 177, 14);
 		panelAñadir.add(labelTituloAñadir);
-		
+
 		labelEditorialAñadir = new JLabel("Editorial:");
 		labelEditorialAñadir.setBounds(217, 96, 177, 14);
 		panelAñadir.add(labelEditorialAñadir);
-		
+
 		labelAutorAñadir = new JLabel("Autor: ");
 		labelAutorAñadir.setBounds(217, 58, 177, 14);
 		panelAñadir.add(labelAutorAñadir);
-		
+
 		labelEjemplaresAñadir = new JLabel("Ejemplares: ");
 		labelEjemplaresAñadir.setBounds(217, 133, 177, 14);
 		panelAñadir.add(labelEjemplaresAñadir);
-		
+
 		btnSelectImagen = new JButton("Seleccionar imagen");
 		btnSelectImagen.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnSelectImagen.setBounds(26, 169, 122, 23);
 		panelAñadir.add(btnSelectImagen);
-		
+
 		lblDirImagen = new JLabel(imagenLibroAñadir.getIcon().toString());
 		lblDirImagen.setEnabled(false);
 		lblDirImagen.setBounds(26, 193, 231, 14);
 		panelAñadir.add(lblDirImagen);
-		
+
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(325, 173, 89, 34);
 		panelAñadir.add(btnGuardar);
-		
+
 		btnLimpiar = new JButton("");
 		btnLimpiar.setIcon(new ImageIcon("src/images/Limpiar.png"));
-	
-	
+
 		btnLimpiar.setBounds(284, 173, 35, 34);
 		panelAñadir.add(btnLimpiar);
-		
+
 		tftTitulo = new JTextField();
 		tftTitulo.setBounds(256, 20, 138, 20);
 		panelAñadir.add(tftTitulo);
 		tftTitulo.setColumns(10);
-		
+
 		tftAutor = new JTextField();
 		tftAutor.setColumns(10);
 		tftAutor.setBounds(256, 55, 138, 20);
 		panelAñadir.add(tftAutor);
-		
+
 		tftEditorial = new JTextField();
 		tftEditorial.setColumns(10);
 		tftEditorial.setBounds(276, 93, 118, 20);
 		panelAñadir.add(tftEditorial);
-		
+
 		tftEjemplares = new JTextField();
 		tftEjemplares.setColumns(10);
 		tftEjemplares.setBounds(298, 130, 96, 20);
@@ -192,6 +192,18 @@ public class VentanaAdministrador extends JFrame {
 		panelBotones.add(botonModificar);
 		contentPane.add(panelBotones, BorderLayout.NORTH);
 
+	}
+
+	public void setBtnSelectImagen(JButton btnSelectImagen) {
+		this.btnSelectImagen = btnSelectImagen;
+	}
+
+	public void setBtnGuardar(JButton btnGuardar) {
+		this.btnGuardar = btnGuardar;
+	}
+
+	public void setBtnLimpiar(JButton btnLimpiar) {
+		this.btnLimpiar = btnLimpiar;
 	}
 
 	public JPanel getPanelAñadir() {
@@ -357,6 +369,21 @@ public class VentanaAdministrador extends JFrame {
 	public JButton getBtnLimpiar() {
 		return btnLimpiar;
 	}
-	
-}
 
+	public void setTftTitulo(JTextField tftTitulo) {
+		this.tftTitulo = tftTitulo;
+	}
+
+	public void setTftAutor(JTextField tftAutor) {
+		this.tftAutor = tftAutor;
+	}
+
+	public void setTftEditorial(JTextField tftEditorial) {
+		this.tftEditorial = tftEditorial;
+	}
+
+	public void setTftEjemplares(JTextField tftEjemplares) {
+		this.tftEjemplares = tftEjemplares;
+	}
+
+}

@@ -58,6 +58,14 @@ public class ControladorVentanaAdministrador implements ActionListener {
 			}
 			mostrarDetalleLibro();
 		}
+		if (e.getSource()==ventanaAdmin.getBtnGuardar()) {
+			String titulo=ventanaAdmin.getTftTitulo().getText();
+			String autor = ventanaAdmin.getTftAutor().getText();
+			String editorial = ventanaAdmin.getTftEditorial().getText();
+			int ejemplares = Integer.parseInt(ventanaAdmin.getTftEjemplares().getText());
+			
+			operacionesAdmin.darDeAltaLibro(null, null, null, indiceActual, null);
+		}
 	}
 
 	private void mostrarDetalleLibro() {
