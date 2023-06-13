@@ -1,0 +1,10 @@
+Cliente: Cliente1
+Libro: Libro1
+Fecha de pedido: 2023-06-12
+Fecha de devolución: 2023-06-19
+
+Cliente: Cliente2
+Libro: Libro12
+Fecha de pedido: 2023-06-12
+Fecha de devolución: 2023-06-22
+

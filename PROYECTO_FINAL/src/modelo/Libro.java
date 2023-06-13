@@ -15,6 +15,7 @@ public class Libro implements Serializable {
 	private String estado;
 	private ImageIcon img;
 
+
 	public Libro(String titulo, String autor, String editorial, int ejemplares, String estado) {
 		this.titulo = titulo;
 		this.autor = autor;

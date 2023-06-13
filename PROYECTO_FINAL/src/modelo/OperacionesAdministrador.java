@@ -17,9 +17,9 @@ public class OperacionesAdministrador {
 
 	public OperacionesAdministrador() {
 		file = new File(archivoUsuarios);
-		libros = new HashMap<Integer, Libro>();
+		libros = cargarLibros();
 		guardarLibros();
-		cargarLibros();
+
 	}
 
 	public void darDeAltaLibro(String titulo, String autor, String editorial, int ejemplares, String estado) {
@@ -44,6 +44,7 @@ public class OperacionesAdministrador {
 	}
 
 	public HashMap<Integer, Libro> cargarLibros() {
+
 		try {
 			FileInputStream fileInputStream = new FileInputStream(file);
 			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
@@ -53,12 +54,8 @@ public class OperacionesAdministrador {
 			objectInputStream.close();
 			System.out.println("Libros leidos con exitos");
 			System.out.println("Libros leidos");
-			for (HashMap.Entry<Integer, Libro> entry : hashMap.entrySet()) {
-				Integer key = entry.getKey();
-				Libro libro = entry.getValue();
-				System.out.println("Clave: " + key + ", Libro: " + libro+" Nombre: "+libro.getTitulo());
-			}
 			Libro libro = hashMap.get(hashMap);
+
 			return hashMap;
 		} catch (FileNotFoundException e) {
 			System.out.println("El archivo de libros no existe. Se creará uno nuevo.");
@@ -70,10 +67,6 @@ public class OperacionesAdministrador {
 	}
 
 	public void guardarLibros() {
-		darDeAltaLibro("Libro1", "", "", 0, "");
-		darDeAltaLibro("Libro2", "", "", 0, "");
-		darDeAltaLibro("Libro3", "", "", 0, "");
-		darDeAltaLibro("Libro4", "", "", 0, "");
 
 		try {
 			FileOutputStream fileOutputStream = new FileOutputStream(file);

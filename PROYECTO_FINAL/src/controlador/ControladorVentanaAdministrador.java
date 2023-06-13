@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+import javax.swing.JOptionPane;
+
 import modelo.Libro;
 import modelo.OperacionesAdministrador;
 import modelo.Usuario;
@@ -17,6 +19,8 @@ public class ControladorVentanaAdministrador implements ActionListener {
 
 	public ControladorVentanaAdministrador() {
 		operacionesAdmin = new OperacionesAdministrador();
+		
+
 		ventanaAdmin = new VentanaAdministrador();
 		ventanaAdmin.setTitle("Administracion");
 		ventanaAdmin.getBotonConsultar().addActionListener(this);
@@ -24,11 +28,18 @@ public class ControladorVentanaAdministrador implements ActionListener {
 		ventanaAdmin.getBotonModificar().addActionListener(this);
 		ventanaAdmin.getBotonAnterior().addActionListener(this);
 		ventanaAdmin.getBotonSiguiente().addActionListener(this);
+		ventanaAdmin.getBtnGuardar().addActionListener(this);
 		ventanaAdmin.setVisible(true);
-		libros = operacionesAdmin.cargarLibros();
+
+		libros = operacionesAdmin.getListaLibros();
+		for (HashMap.Entry<Integer, Libro> entry : libros.entrySet()) {
+			Integer key = entry.getKey();
+			Libro libro = entry.getValue();
+			System.out.println("Clave: " + key + ", Libro: " + libro + " Nombre: " + libro.getTitulo());
+		}
+
 		indiceActual = 0;
 		mostrarDetalleLibro();
-
 	}
 
 	@Override
@@ -58,24 +69,25 @@ public class ControladorVentanaAdministrador implements ActionListener {
 			}
 			mostrarDetalleLibro();
 		}
-		if (e.getSource()==ventanaAdmin.getBtnGuardar()) {
-			String titulo=ventanaAdmin.getTftTitulo().getText();
+		if (e.getSource() == ventanaAdmin.getBtnGuardar()) {
+
+			String titulo = ventanaAdmin.getTftTitulo().getText();
 			String autor = ventanaAdmin.getTftAutor().getText();
 			String editorial = ventanaAdmin.getTftEditorial().getText();
 			int ejemplares = Integer.parseInt(ventanaAdmin.getTftEjemplares().getText());
-			
-			operacionesAdmin.darDeAltaLibro(null, null, null, indiceActual, null);
+			String estado = ventanaAdmin.getComboBox().getSelectedItem().toString();
+			operacionesAdmin.darDeAltaLibro(titulo, autor, editorial, ejemplares, estado);
+			JOptionPane.showMessageDialog(null, "Libro :"+titulo+" añadido correctamente.");
+
 		}
 	}
 
 	private void mostrarDetalleLibro() {
 		Libro libroActual = libros.get(indiceActual);
-		ventanaAdmin.getImagenLibro().setIcon(libroActual.getImg());
 		ventanaAdmin.getLabelTitulo().setText("Título: " + libroActual.getTitulo());
 		ventanaAdmin.getLabelEditorial().setText("Editorial: " + libroActual.getEditorial());
 		ventanaAdmin.getLabelAutor().setText("Autor: " + libroActual.getAutor());
 		ventanaAdmin.getLabelEjemplares().setText("Ejemplares: " + libroActual.getEjemplares());
 		ventanaAdmin.getLabelEstado().setText("Estado: " + libroActual.getEstado());
 	}
-
 }
