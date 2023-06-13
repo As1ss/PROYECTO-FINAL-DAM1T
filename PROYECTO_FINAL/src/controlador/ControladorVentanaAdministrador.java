@@ -79,8 +79,33 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 
 					if (opcion == JOptionPane.YES_OPTION) {
 						operacionesAdmin.darDeBajaLibro(entry.getKey());
-						agregarLibrosConsulta();
-						agregarLibrosModificar();
+
+						break; // Termina el bucle después de encontrar y eliminar el libro
+					}
+				}
+			}
+			agregarLibrosConsulta();
+			agregarLibrosModificar();
+
+		}
+		if (e.getSource() == ventanaAdmin.getBotonGuardarModificar()) {
+			String valor = (String) ventanaAdmin.getListModificar().getSelectedValue();
+
+			for (Entry<Integer, Libro> entry : operacionesAdmin.getListaLibros().entrySet()) {
+				Libro libro = entry.getValue();
+				if (libro.getTitulo().equals(valor)) {
+					String titulo = ventanaAdmin.getTextoTituloModificar().getText();
+					String autor = ventanaAdmin.getTextoAutorModificar().getText();
+					String editorial = ventanaAdmin.getTextoEditorialModificar().getText();
+					int ejemplares = Integer.parseInt(ventanaAdmin.getTextoEjemplaresModificar().getText());
+					String estado = ventanaAdmin.getComboBoxModificar().getSelectedItem().toString();
+
+					int opcion = JOptionPane.showConfirmDialog(ventanaAdmin,
+							"¿Seguro que quieres modificar el producto: " + libro.getTitulo() + "?");
+
+					if (opcion == JOptionPane.YES_OPTION) {
+
+						operacionesAdmin.modificarLibro(libro.getId(), titulo, autor, editorial, ejemplares, estado);
 
 						break; // Termina el bucle después de encontrar y eliminar el libro
 					}

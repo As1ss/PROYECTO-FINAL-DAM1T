@@ -43,6 +43,7 @@ public class OperacionesAdministrador {
 			libro.setEjemplares(nuevosEjemplares);
 			libro.setEstado(nuevoEstado);
 		}
+		guardarLibros(); // Actualizar el archivo de libros
 	}
 
 	public HashMap<Integer, Libro> cargarLibros() {
