@@ -18,15 +18,14 @@ public class OperacionesAdministrador {
 	public OperacionesAdministrador() {
 		file = new File(archivoUsuarios);
 		libros = cargarLibros();
-		guardarLibros();
 
 	}
 
 	public void darDeAltaLibro(String titulo, String autor, String editorial, int ejemplares, String estado) {
-		Libro libro = new Libro(titulo, autor, editorial, ejemplares, estado);
-		libros.put(libro.getId(), libro);
+	    Libro libro = new Libro(titulo, autor, editorial, ejemplares, estado);
+	    libros.put(libro.getId(), libro);
+	    guardarLibros(); // Actualizar el archivo de libros
 	}
-
 	public void darDeBajaLibro(int id) {
 		libros.remove(id);
 	}
@@ -44,26 +43,29 @@ public class OperacionesAdministrador {
 	}
 
 	public HashMap<Integer, Libro> cargarLibros() {
-
 		try {
-			FileInputStream fileInputStream = new FileInputStream(file);
-			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+			if (file.exists()) {
+				FileInputStream fileInputStream = new FileInputStream(file);
+				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-			// Leer el HashMap del archivo
-			HashMap<Integer, Libro> hashMap = (HashMap<Integer, Libro>) objectInputStream.readObject();
-			objectInputStream.close();
-			System.out.println("Libros leidos con exitos");
-			System.out.println("Libros leidos");
-			Libro libro = hashMap.get(hashMap);
+				// Leer el HashMap del archivo
+				HashMap<Integer, Libro> hashMap = (HashMap<Integer, Libro>) objectInputStream.readObject();
+				objectInputStream.close();
 
-			return hashMap;
+				libros = hashMap; // Asignar el HashMap cargado a la variable libros
+				System.out.println("Libros leídos con éxito");
+
+				return hashMap;
+			} else {
+				System.out.println("El archivo de libros no existe. Se creará uno nuevo.");
+			}
 		} catch (FileNotFoundException e) {
 			System.out.println("El archivo de libros no existe. Se creará uno nuevo.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return libros; // Si ocurre algún error, se devuelve un HashMap vacío
+		return new HashMap<>(); // Si ocurre algún error, se devuelve un HashMap vacío
 	}
 
 	public void guardarLibros() {

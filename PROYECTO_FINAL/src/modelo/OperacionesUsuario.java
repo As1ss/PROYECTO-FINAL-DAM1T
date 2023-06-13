@@ -18,28 +18,35 @@ public class OperacionesUsuario {
 
 	public OperacionesUsuario() {
 		file = new File(archivoUsuarios);
-		usuarios = new HashMap<String, Usuario>();
-		guardarUsuarios();
+		usuarios = cargarUsuarios();
 
 	}
 
 	public HashMap<String, Usuario> cargarUsuarios() {
 		try {
-			FileInputStream fileInputStream = new FileInputStream(file);
-			ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+			if (file.exists()) {
+				FileInputStream fileInputStream = new FileInputStream(file);
+				ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 
-			// Leer el HashMap del archivo
-			HashMap<String, Usuario> hashMap = (HashMap<String, Usuario>) objectInputStream.readObject();
-			objectInputStream.close();
+				// Leer el HashMap del archivo
+				HashMap<String, Usuario> hashMap = (HashMap<String, Usuario>) objectInputStream.readObject();
+				objectInputStream.close();
 
-			return hashMap;
+				return hashMap;
+			} else {
+				System.out.println("El archivo de usuarios no existe. Se creará uno nuevo.");
+				return new HashMap<>();
+			}
 		} catch (FileNotFoundException e) {
 			System.out.println("El archivo de usuarios no existe. Se creará uno nuevo.");
+		} catch (EOFException e) {
+			// El archivo está vacío, se devuelve un HashMap vacío
+			return new HashMap<>();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return usuarios; // Si ocurre algún error, se devuelve un HashMap vacío
+		return new HashMap<>(); // Si ocurre algún error, se devuelve un HashMap vacío
 	}
 
 	public void guardarUsuarios() {

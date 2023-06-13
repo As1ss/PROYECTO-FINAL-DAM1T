@@ -47,23 +47,31 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 		if (e.getSource() == ventana.getBotonInicioSesion()) {
 			String alias = ventana.getAliasTexto().getText();
 			String contraseña = String.valueOf(ventana.getContraseñaTexto().getPassword());
-
 			// Obtener la colección de usuarios almacenados en el archivo
 			HashMap<String, Usuario> usuariosAlmacenados = operacionesUsu.cargarUsuarios();
-
 			// Verificar la autenticación del usuario
 			Usuario usuario = usuariosAlmacenados.get(alias);
 			if (usuario != null && usuario.getContraseña().equals(contraseña)) {
 				// Iniciar la nueva ventana aquí
-				// Puede variar segun las credenciales sean de Administración o cualesquiera otras
+				// Puede variar segun las credenciales sean de Administración o cualesquiera
+				// otras
 				JOptionPane.showMessageDialog(null, "INICIO DE SESION SATISFACTORIO.");
 				if (usuario.getAlias().equalsIgnoreCase("Admin") && usuario.getContraseña().equalsIgnoreCase("1234")) {
 					try {
 						new ControladorVentanaAdministrador();
 					} catch (Exception e2) {
-						// TODO: handle exception
+
 					}
+				} else {
+					try {
+						new ControladorVentanaCliente(usuario);
+					} catch (Exception e2) {
+
+					}
+
 				}
+
+				operacionesUsu.guardarUsuarios(); // Actualizar el archivo de usuarios
 
 			} else {
 				// Mostrar mensaje de error de inicio de sesión
