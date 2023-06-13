@@ -31,12 +31,11 @@ public class ControladorVentanaCliente implements ActionListener {
 		ventanaCli.getBtnDevolver().addActionListener(this);
 		ventanaCli.getBtnPedido().addActionListener(this);
 		ventanaCli.getBtnPedir().addActionListener(this);
-		ventanaCli.getBotonAnterior().addActionListener(this);
-		ventanaCli.getBotonSiguiente().addActionListener(this);
+	
 		ventanaCli.setVisible(true);
 		libros = operacionesAdmin.cargarLibros();
 		indiceActual = 0;
-		mostrarDetalleLibro();
+	
 
 	}
 
@@ -55,23 +54,7 @@ public class ControladorVentanaCliente implements ActionListener {
 
 		}
 
-		if (e.getSource() == ventanaCli.getBotonAnterior()) {
-			if (indiceActual > 0) {
-				indiceActual--;
-			} else {
-				indiceActual = libros.size() - 1;
-			}
-			mostrarDetalleLibro();
-		}
-
-		if (e.getSource() == ventanaCli.getBotonSiguiente()) {
-			if (indiceActual < libros.size() - 1) {
-				indiceActual++;
-			} else {
-				indiceActual = 0;
-			}
-			mostrarDetalleLibro();
-		}
+		
 		
 		if (e.getSource() == ventanaCli.getBtnPedir()) {
 			
@@ -87,21 +70,6 @@ public class ControladorVentanaCliente implements ActionListener {
 
 	}
 
-	private void mostrarDetalleLibro() {
-		Libro libroActual = libros.get(indiceActual);
-		ventanaCli.getImagenLibroPedir().setIcon(libroActual.getImg());
-		ventanaCli.getLabelTituloPedir().setText("Título: " + libroActual.getTitulo());
-		ventanaCli.getLabelEditorialPedir().setText("Editorial: " + libroActual.getEditorial());
-		ventanaCli.getLabelAutorPedir().setText("Autor: " + libroActual.getAutor());
-		ventanaCli.getLabelEjemplaresPedir().setText("Ejemplares: " + libroActual.getEjemplares());
-		ventanaCli.getLabelEstadoPedir().setText("Estado: " + libroActual.getEstado());
 
-		ventanaCli.getImagenLibroDevolver().setIcon(libroActual.getImg());
-		ventanaCli.getLabelTituloDevolver().setText("Título: " + libroActual.getTitulo());
-		ventanaCli.getLabelEditorialDevolver().setText("Editorial: " + libroActual.getEditorial());
-		ventanaCli.getLabelAutorDevolver().setText("Autor: " + libroActual.getAutor());
-		ventanaCli.getLabelEjemplaresDevolver().setText("Ejemplares: " + libroActual.getEjemplares());
-		ventanaCli.getLabelEstadoDevolver().setText("Estado: " + libroActual.getEstado());
-	}
 
 }

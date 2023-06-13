@@ -12,8 +12,11 @@ public class Libro implements Serializable {
 	private String autor;
 	private String editorial;
 	private int ejemplares;
+	
+
 	private String estado;
 	private ImageIcon img;
+	
 
 
 	public Libro(String titulo, String autor, String editorial, int ejemplares, String estado) {
@@ -90,4 +93,5 @@ public class Libro implements Serializable {
 	public void setImg(ImageIcon img) {
 		this.img = img;
 	}
+
 }

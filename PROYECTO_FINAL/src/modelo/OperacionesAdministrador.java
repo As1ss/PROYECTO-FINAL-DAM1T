@@ -14,6 +14,7 @@ public class OperacionesAdministrador {
 	private HashMap<Integer, Libro> libros;
 	private String archivoUsuarios = "src/documentos/libros.data";
 	private File file;
+	private String[] opciones = { "Nuevo", "Muy bueno", "Bueno", "Aceptable" };
 
 	public OperacionesAdministrador() {
 		file = new File(archivoUsuarios);
@@ -22,12 +23,14 @@ public class OperacionesAdministrador {
 	}
 
 	public void darDeAltaLibro(String titulo, String autor, String editorial, int ejemplares, String estado) {
-	    Libro libro = new Libro(titulo, autor, editorial, ejemplares, estado);
-	    libros.put(libro.getId(), libro);
-	    guardarLibros(); // Actualizar el archivo de libros
+		Libro libro = new Libro(titulo, autor, editorial, ejemplares, estado);
+		libros.put(libro.getId(), libro);
+		guardarLibros(); // Actualizar el archivo de libros
 	}
+
 	public void darDeBajaLibro(int id) {
 		libros.remove(id);
+		guardarLibros(); // Actualizar el archivo de libros
 	}
 
 	public void modificarLibro(int id, String nuevoTitulo, String nuevoAutor, String nuevaEditorial,
@@ -108,6 +111,14 @@ public class OperacionesAdministrador {
 
 	public void setLibros(HashMap<Integer, Libro> libros) {
 		this.libros = libros;
+	}
+
+	public String[] getOpciones() {
+		return opciones;
+	}
+
+	public void setOpciones(String[] opciones) {
+		this.opciones = opciones;
 	}
 
 }

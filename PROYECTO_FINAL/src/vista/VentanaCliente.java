@@ -3,14 +3,17 @@ package vista;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JToolBar;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JList;
 
 public class VentanaCliente extends JDialog {
 
@@ -18,9 +21,6 @@ public class VentanaCliente extends JDialog {
 	private JButton btnPedido;
 	private JButton btnDevolucion;
 	private JPanel panelGeneral;
-	private JLabel imagenLibroPedir;
-	private JButton botonAnterior;
-	private JButton botonSiguiente;
 	private JLabel labelTituloPedir;
 	private JLabel labelEditorialPedir;
 	private JLabel labelAutorPedir;
@@ -57,28 +57,13 @@ public class VentanaCliente extends JDialog {
 		{
 			panelGeneral = new JPanel();
 			contentPanel.add(panelGeneral, BorderLayout.CENTER);
-			cardLayout = new CardLayout(0,0);
+			cardLayout = new CardLayout(0, 0);
 			panelGeneral.setLayout(cardLayout);
 			{
 				JPanel panelPedido = new JPanel();
 				panelPedido.setLayout(null);
 				panelPedido.setBackground(Color.WHITE);
 				panelGeneral.add(panelPedido, "panelPedido");
-				{
-					imagenLibroPedir = new JLabel();
-					imagenLibroPedir.setBounds(31, 11, 122, 142);
-					panelPedido.add(imagenLibroPedir);
-				}
-				{
-					botonAnterior = new JButton("<=");
-					botonAnterior.setBounds(10, 164, 66, 23);
-					panelPedido.add(botonAnterior);
-				}
-				{
-					botonSiguiente = new JButton("=>");
-					botonSiguiente.setBounds(146, 164, 66, 23);
-					panelPedido.add(botonSiguiente);
-				}
 				{
 					labelTituloPedir = new JLabel("Titulo: ");
 					labelTituloPedir.setBounds(237, 23, 177, 14);
@@ -104,10 +89,15 @@ public class VentanaCliente extends JDialog {
 					labelEstadoPedir.setBounds(237, 173, 177, 14);
 					panelPedido.add(labelEstadoPedir);
 				}
-				
+
 				btnPedir = new JButton("Pedir");
-				btnPedir.setBounds(78, 164, 66, 23);
+				btnPedir.setBounds(78, 169, 66, 23);
 				panelPedido.add(btnPedir);
+				DefaultListModel<String> listModelPedido = new DefaultListModel<>();
+				JList<String> listPedido = new JList<>(listModelPedido);
+				listPedido.setBounds(33, 22, 146, 125);
+				JScrollPane scrollPanePedido = new JScrollPane(listPedido);
+				panelPedido.add(listPedido);
 			}
 			{
 				JPanel panelDevolucion = new JPanel();
@@ -173,18 +163,6 @@ public class VentanaCliente extends JDialog {
 		return panelGeneral;
 	}
 
-	public JLabel getImagenLibroPedir() {
-		return imagenLibroPedir;
-	}
-
-	public JButton getBotonAnterior() {
-		return botonAnterior;
-	}
-
-	public JButton getBotonSiguiente() {
-		return botonSiguiente;
-	}
-
 	public JLabel getLabelTituloPedir() {
 		return labelTituloPedir;
 	}
@@ -236,5 +214,4 @@ public class VentanaCliente extends JDialog {
 	public JButton getBtnDevolver() {
 		return btnDevolver;
 	}
-	
 }

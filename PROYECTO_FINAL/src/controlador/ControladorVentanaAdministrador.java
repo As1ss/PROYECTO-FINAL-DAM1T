@@ -3,7 +3,9 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
@@ -33,9 +35,12 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 		ventanaAdmin.getBtnGuardar().addActionListener(this);
 		ventanaAdmin.getList().addListSelectionListener(this);
 		ventanaAdmin.getListModificar().addListSelectionListener(this);
+		ventanaAdmin.getBotonBorrarModificar().addActionListener(this);
+		ventanaAdmin.getBotonGuardarModificar().addActionListener(this);
 		ventanaAdmin.setVisible(true);
 		agregarLibrosConsulta();
 		agregarLibrosModificar();
+		añadirCategoriasJCombo();
 
 	}
 
@@ -61,6 +66,28 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 			String estado = ventanaAdmin.getComboBox().getSelectedItem().toString();
 			operacionesAdmin.darDeAltaLibro(titulo, autor, editorial, ejemplares, estado);
 			JOptionPane.showMessageDialog(null, "Libro :" + titulo + " añadido correctamente.");
+
+		}
+		if (e.getSource() == ventanaAdmin.getBotonBorrarModificar()) {
+			String valor = (String) ventanaAdmin.getListModificar().getSelectedValue();
+
+			for (Entry<Integer, Libro> entry : operacionesAdmin.getListaLibros().entrySet()) {
+				Libro libro = entry.getValue();
+				if (libro.getTitulo().equals(valor)) {
+					int opcion = JOptionPane.showConfirmDialog(ventanaAdmin,
+							"¿Seguro que quieres eliminar el producto: " + libro.getTitulo() + "?");
+
+					if (opcion == JOptionPane.YES_OPTION) {
+						operacionesAdmin.darDeBajaLibro(entry.getKey());
+						agregarLibrosConsulta();
+						agregarLibrosModificar();
+
+						break; // Termina el bucle después de encontrar y eliminar el libro
+					}
+				}
+			}
+			agregarLibrosConsulta();
+			agregarLibrosModificar();
 
 		}
 	}
@@ -91,7 +118,7 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 					ventanaAdmin.getTextoEditorialModificar().setText(libro.getEditorial());
 					ventanaAdmin.getTextoEjemplaresModificar().setText(String.valueOf(libro.getEjemplares()));
 					ventanaAdmin.getComboBoxModificar().setSelectedItem(libro.getEstado());
-					
+
 				}
 			}
 		}
@@ -113,6 +140,15 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 			System.out.println(titulo.getTitulo());
 		}
 
+	}
+
+	public void añadirCategoriasJCombo() {
+
+		for (int i = 0; i < operacionesAdmin.getOpciones().length; i++) {
+			ventanaAdmin.getComboBoxModificar().addItem(operacionesAdmin.getOpciones()[i]);
+			ventanaAdmin.getComboBox().addItem(operacionesAdmin.getOpciones()[i]);
+
+		}
 	}
 
 }

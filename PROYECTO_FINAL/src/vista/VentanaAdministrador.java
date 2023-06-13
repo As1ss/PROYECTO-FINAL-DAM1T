@@ -46,8 +46,8 @@ public class VentanaAdministrador extends JFrame {
 	private JLabel labelEditorialAñadir_1;
 	private JLabel labelAutorAñadir_1;
 	private JLabel labelEjemplaresAñadir_1;
-	private JButton btnGuardar_1;
-	private JButton botonBorrarMod;
+	private JButton botonGuardarModificar;
+	private JButton botonBorrarModificar;
 	private JTextField textoTituloModificar;
 	private JTextField textoAutorModificar;
 	private JTextField textoEditorialModificar;
@@ -121,7 +121,7 @@ public class VentanaAdministrador extends JFrame {
 		scrollPane.setPreferredSize(new Dimension(200, 200));
 		panelConsulta.add(scrollPane);
 
-	
+
 
 		panelAñadir = new JPanel();
 		panelAñadir.setBackground(Color.WHITE);
@@ -202,9 +202,9 @@ public class VentanaAdministrador extends JFrame {
 		lblNewLabel.setBounds(217, 123, 46, 14);
 		panelAñadir.add(lblNewLabel);
 
-		String[] opciones = { "Nuevo", "Muy bueno", "Bueno", "Aceptable" };
+		
 
-		comboBox = new JComboBox(opciones);
+		comboBox = new JComboBox();
 		comboBox.setBounds(276, 119, 118, 22);
 		panelAñadir.add(comboBox);
 
@@ -229,13 +229,13 @@ public class VentanaAdministrador extends JFrame {
 		labelEjemplaresAñadir_1.setBounds(217, 98, 77, 14);
 		panelModificar.add(labelEjemplaresAñadir_1);
 
-		btnGuardar_1 = new JButton("Guardar");
-		btnGuardar_1.setBounds(325, 173, 89, 34);
-		panelModificar.add(btnGuardar_1);
+		botonGuardarModificar = new JButton("Guardar");
+		botonGuardarModificar.setBounds(325, 173, 89, 34);
+		panelModificar.add(botonGuardarModificar);
 
-		botonBorrarMod = new JButton("Borrar Libro");
-		botonBorrarMod.setBounds(217, 173, 102, 34);
-		panelModificar.add(botonBorrarMod);
+		botonBorrarModificar = new JButton("Borrar Libro");
+		botonBorrarModificar.setBounds(208, 173, 111, 34);
+		panelModificar.add(botonBorrarModificar);
 
 		textoTituloModificar = new JTextField();
 		textoTituloModificar.setColumns(10);
@@ -266,14 +266,19 @@ public class VentanaAdministrador extends JFrame {
 		panelModificar.add(comboBoxModificar);
 		
 
+
+		
+
 		listModelModificar = new DefaultListModel<>();
 		listModificar = new JList<>(listModelModificar);
 		listModificar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		listModificar.setBounds(26, 35, 99, 137);
-		scrollPaneModificar = new JScrollPane(list);
-		scrollPaneModificar.setBounds(22, 11, 178, 200);
-		scrollPaneModificar.setPreferredSize(new Dimension(200,200));
+		listModificar.setEnabled(true);
+		listModificar.setBounds(22, 35, 99, 137);
+		scrollPaneModificar = new JScrollPane(listModificar);
+		scrollPaneModificar.setBounds(22, 11, 176, 200);
+		scrollPaneModificar.setPreferredSize(new Dimension(200, 200));
 		panelModificar.add(scrollPaneModificar);
+
 
 		botonConsultar = new JButton("Consultar");
 		botonAñadir = new JButton("A\u00F1adir");
@@ -286,6 +291,22 @@ public class VentanaAdministrador extends JFrame {
 		panelBotones.add(botonModificar);
 		contentPane.add(panelBotones, BorderLayout.NORTH);
 
+	}
+
+	public JButton getBotonGuardarModificar() {
+		return botonGuardarModificar;
+	}
+
+	public void setBotonGuardarModificar(JButton botonGuardarModificar) {
+		this.botonGuardarModificar = botonGuardarModificar;
+	}
+
+	public JButton getBotonBorrarModificar() {
+		return botonBorrarModificar;
+	}
+
+	public void setBotonBorrarModificar(JButton botonBorrarModificar) {
+		this.botonBorrarModificar = botonBorrarModificar;
 	}
 
 	public JScrollPane getScrollPaneModificar() {
