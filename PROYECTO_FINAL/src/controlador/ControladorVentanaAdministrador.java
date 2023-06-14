@@ -1,3 +1,8 @@
+
+/**
+ * Esta clase actúa como controlador para la ventana de administrador de la aplicación.
+ * Maneja eventos y acciones relacionadas con la ventana de administrador.
+ */
 package controlador;
 
 import java.awt.Image;
@@ -28,6 +33,11 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 	OperacionesAdministrador operacionesAdmin;
 	VentanaAdministrador ventanaAdmin;
 
+	/**
+	 * Constructor de la clase ControladorVentanaAdministrador. Crea una instancia
+	 * de OperacionesAdministrador y VentanaAdministrador, y configura los listeners
+	 * de eventos en los componentes de la ventana.
+	 */
 	public ControladorVentanaAdministrador() {
 		operacionesAdmin = new OperacionesAdministrador();
 		ventanaAdmin = new VentanaAdministrador();
@@ -167,7 +177,6 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 
 		if (e.getSource() == ventanaAdmin.getListModificar()) {
 			String selectedValue = (String) ventanaAdmin.getListModificar().getSelectedValue();
-			System.out.println(selectedValue);
 
 			for (Libro libro : operacionesAdmin.getListaLibros().values()) {
 				if (libro.getTitulo().equals(selectedValue)) {
@@ -182,24 +191,35 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 		}
 	}
 
+	/**
+	 * Agrega los títulos de los libros al JList del panel Consulta
+	 */
+
 	public void agregarLibrosConsulta() {
 		ventanaAdmin.getListModel().removeAllElements();
 		for (Libro titulo : operacionesAdmin.getListaLibros().values()) {
 			ventanaAdmin.getListModel().addElement(titulo.getTitulo());
-			System.out.println(titulo.getTitulo());
+
 		}
 
 	}
+
+	/**
+	 * Agrega los títulos de los libros al JList del panel Modificar
+	 */
 
 	public void agregarLibrosModificar() {
 		ventanaAdmin.getListModelModificar().removeAllElements();
 		for (Libro titulo : operacionesAdmin.getListaLibros().values()) {
 			ventanaAdmin.getListModelModificar().addElement(titulo.getTitulo());
-			System.out.println(titulo.getTitulo());
+
 		}
 
 	}
 
+	/**
+	 * Añade las opciones de estado al JComboBox del panel Modificar
+	 */
 	public void añadirCategoriasJCombo() {
 
 		for (int i = 0; i < operacionesAdmin.getOpciones().length; i++) {
@@ -209,6 +229,14 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 		}
 	}
 
+	/**
+	 * Redimensiona una imagen a las dimensiones especificadas.
+	 *
+	 * @param icon  ImageIcon de la imagen a redimensionar.
+	 * @param ancho Ancho deseado de la imagen redimensionada.
+	 * @param alto  Alto deseado de la imagen redimensionada.
+	 * @return ImageIcon de la imagen redimensionada.
+	 */
 	public ImageIcon redimensionarImagen(ImageIcon icon, int ancho, int alto) {
 		Image imagen = icon.getImage();
 		Image redimension = imagen.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);

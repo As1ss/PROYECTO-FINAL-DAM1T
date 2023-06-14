@@ -1,3 +1,6 @@
+/**
+ * Ventana del cliente para pedir y devolver libros
+ */
 package vista;
 
 import java.awt.BorderLayout;

@@ -1,3 +1,19 @@
+/**
+
+ControladorVentanaCreacionUsuario es una clase que implementa ActionListener y MouseListener para manejar los eventos y la interacción de la ventana de creación de usuario.
+
+Se encarga de realizar las operaciones necesarias para agregar un nuevo usuario, validar los campos ingresados y mostrar mensajes de confirmación o error.
+
+Esta clase se comunica con la clase OperacionesUsuario y la clase VentanaCreacionUsuario.
+
+@see ActionListener
+
+@see MouseListener
+
+@see OperacionesUsuario
+
+@see VentanaCreacionUsuario
+*/
 package controlador;
 
 import java.awt.Color;
@@ -17,6 +33,14 @@ public class ControladorVentanaCreacionUsuario implements ActionListener, MouseL
 	private OperacionesUsuario operacionesUsu;
 	private VentanaCreacionUsuario ventanaUsu;
 
+	/**
+	 * 
+	 * Constructor de la clase ControladorVentanaCreacionUsuario.
+	 * 
+	 * @param operacionesUsu instancia de la clase OperacionesUsuario para realizar
+	 *                       operaciones relacionadas con usuarios
+	 */
+
 	public ControladorVentanaCreacionUsuario(OperacionesUsuario operacionesUsu) {
 		this.operacionesUsu = operacionesUsu;
 		ventanaUsu = new VentanaCreacionUsuario();
@@ -32,6 +56,12 @@ public class ControladorVentanaCreacionUsuario implements ActionListener, MouseL
 
 	}
 
+	/**
+	 * 
+	 * Añade los textos predefinidos a los campos de texto en la ventana de creación
+	 * de usuario.
+	 */
+
 	private void añadirTextosPredefinidos() {
 		ventanaUsu.getNombreTexto().setText("Nombre");
 		ventanaUsu.getNombreTexto().setForeground(new Color(192, 192, 192));
@@ -44,6 +74,13 @@ public class ControladorVentanaCreacionUsuario implements ActionListener, MouseL
 		ventanaUsu.getContraseñaTexto().setText("🔒Contraseña");
 
 	}
+
+	/**
+	 * 
+	 * Maneja los eventos de acción ocurridos en la ventana de creación de usuario.
+	 * 
+	 * @param es el evento de acción que ocurrió
+	 */
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -66,6 +103,12 @@ public class ControladorVentanaCreacionUsuario implements ActionListener, MouseL
 		}
 
 	}
+
+	/**
+	 * Eventos de ratón en el cual proporciona la funcionalidad de reemplazar el
+	 * mensaje de información por el campo vacío para rellenar con nuestras
+	 * credenciales
+	 */
 
 	@Override
 	public void mouseClicked(MouseEvent e) {

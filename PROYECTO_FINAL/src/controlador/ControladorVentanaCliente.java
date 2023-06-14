@@ -1,3 +1,8 @@
+/**
+ * En esta clase podremos interactuar con un usuario cliente para poder consultar los libros disponibles , pedir un libro y devolverlo 
+ * Todo esto se almacenará en un fichero denominado historial.txt en el cual figurarán el alias del usuario, el titulo del
+ * libro pedido o devuelto y la fecha en la que se ha realizado el pedido o la devolución.
+ */
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -46,6 +51,14 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 		agregarLibrosPedido();
 		agregarLibrosDevolucion();
 	}
+
+	/**
+	 * Método actionPerformed que maneja los eventos de acción generados por los
+	 * botones de la ventana. Realiza las operaciones correspondientes según el
+	 * botón presionado.
+	 * 
+	 * @param e el evento de acción generado
+	 */
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -103,6 +116,10 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 		}
 	}
 
+	/**
+	 * Método que agrega los títulos de los libros disponibles en el JList del panel
+	 * Pedido
+	 */
 	public void agregarLibrosPedido() {
 		ventanaCli.getListModelPedido().removeAllElements();
 		for (Libro titulo : operacionesAdmin.getListaLibros().values()) {
@@ -110,6 +127,10 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 		}
 	}
 
+	/**
+	 * Método que agrega los títulos de los libros disponibles en el JList del panel
+	 * Devolucion
+	 */
 	public void agregarLibrosDevolucion() {
 		ventanaCli.getListModelDevolucion().removeAllElements();
 		if (usu.getLibroPrestado() != null) {
@@ -125,6 +146,10 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 		}
 	}
 
+	/**
+	 * Eventos en los cuales se muestran la información tanto en etiquetas como
+	 * campos de texto del libro seleccionado de la Jlist
+	 */
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		if (e.getSource() == ventanaCli.getListPedido()) {

@@ -1,3 +1,6 @@
+/**
+ * Ventana para poder crear usuarios
+ */
 package vista;
 
 import java.awt.EventQueue;

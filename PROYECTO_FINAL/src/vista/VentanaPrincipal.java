@@ -1,3 +1,6 @@
+/**
+ * Ventana principal de inicio de sesion
+ */
 package vista;
 
 import java.awt.EventQueue;

@@ -1,3 +1,6 @@
+/**
+ * Ventana de administrador para añadir, eliminar modificar libros
+ */
 package vista;
 
 import javax.swing.*;
@@ -118,6 +121,7 @@ public class VentanaAdministrador extends JFrame {
 
 		listModel = new DefaultListModel<>();
 		list = new JList<>(listModel);
+		list.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		list.setEnabled(true);
 		list.setBounds(26, 35, 99, 137);

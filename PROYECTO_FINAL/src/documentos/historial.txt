@@ -298,3 +298,38 @@ Título del libro: Libro de la selva
 Fecha de pedido: 
 Fecha de devolución: 2023-06-14T12:51:16.393976500
 
+Cliente: As1ss
+Título del libro: uu
+Fecha de pedido: 2023-06-14T13:16:07.701523700
+Fecha de devolución: 
+
+Cliente: As1ss
+Título del libro: uu
+Fecha de pedido: 
+Fecha de devolución: 2023-06-14T13:16:22.723523200
+
+Cliente: As1ss
+Título del libro: uu
+Fecha de pedido: 2023-06-14T13:16:27.586524300
+Fecha de devolución: 
+
+Cliente: As1ss
+Título del libro: uu
+Fecha de pedido: 
+Fecha de devolución: 2023-06-14T13:39:25.903624800
+
+Cliente: As1ss
+Título del libro: Don quixote
+Fecha de pedido: 2023-06-14T13:39:30.058623900
+Fecha de devolución: 
+
+Cliente: As1ss
+Título del libro: Don quixote
+Fecha de pedido: 
+Fecha de devolución: 2023-06-14T13:53:27.336301800
+
+Cliente: As1ss
+Título del libro: 1 MAN ARMY
+Fecha de pedido: 2023-06-14T14:14:43.806669200
+Fecha de devolución: 
+

@@ -1,5 +1,17 @@
+/**
+
+La clase Administrador representa a un administrador en el sistema.
+
+Contiene métodos para mostrar información y obtener y establecer atributos como alias, contraseña y rol.
+*/
 package modelo;
 
+/**
+ * 
+ * Crea una instancia de la clase Administrador. Se establecen valores
+ * predeterminados para el alias y la contraseña. El rol se establece
+ * posteriormente mediante el método setter correspondiente.
+ */
 public class Administrador {
 	private String alias;
 	private String contraseña;
@@ -9,6 +21,11 @@ public class Administrador {
 		alias = "Admin";
 		contraseña = "1234";
 	}
+
+	/**
+	 * 
+	 * Muestra la información del administrador.
+	 */
 
 	public void mostrarInformacion() {
 		System.out.println("Alias: " + alias);

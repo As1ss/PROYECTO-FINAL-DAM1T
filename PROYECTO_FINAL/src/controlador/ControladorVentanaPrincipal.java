@@ -1,3 +1,7 @@
+/**
+ * El controlador para la ventana principal de inicio de sesión.
+ * Maneja eventos de ratón y acciones de botones para la autenticación de usuarios y registro de nuevos usuarios.
+ */
 package controlador;
 
 import java.awt.Color;
@@ -22,7 +26,10 @@ import vista.VentanaPrincipal;
 public class ControladorVentanaPrincipal implements MouseListener, ActionListener {
 	private VentanaPrincipal ventana;
 	private OperacionesUsuario operacionesUsu;
-
+	 /**
+     * Constructor de la clase ControladorVentanaPrincipal.
+     * Crea una instancia de VentanaPrincipal, configura el aspecto y maneja los eventos.
+     */
 	public ControladorVentanaPrincipal() {
 		operacionesUsu = new OperacionesUsuario();
 		ventana = new VentanaPrincipal();
@@ -35,13 +42,17 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 		ventana.setVisible(true);
 	}
 
+	 /**
+     * Añade los textos predefinidos "👤Usuario" y "🔒Contraseña" a los campos de texto de la ventana principal.
+     */
+
 	private void añadirTextosPredefinidos() {
 		ventana.getAliasTexto().setText("👤Usuario");
 		ventana.getContraseñaTexto().setEchoChar((char) 0);
 		ventana.getContraseñaTexto().setForeground(new Color(192, 192, 192));
 		ventana.getContraseñaTexto().setText("🔒Contraseña");
 	}
-
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == ventana.getBotonInicioSesion()) {
@@ -89,6 +100,10 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 			}
 		}
 	}
+	/**
+	 * Eventos de ratón en el cual proporciona la funcionalidad de reemplazar el mensaje de información
+	 * por el campo vacío para rellenar con nuestras credenciales
+	 */
 
 	@Override
 	public void mouseClicked(MouseEvent e) {

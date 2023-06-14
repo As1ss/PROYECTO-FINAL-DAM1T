@@ -1,3 +1,12 @@
+
+/**
+
+RegistroFechas es una clase genérica que representa un registro de fechas relacionadas con un pedido de libro.
+
+Permite almacenar y guardar información sobre el cliente, el título del libro, la fecha de pedido y la fecha de devolución en un archivo de historial.
+
+@param <T> el tipo de dato utilizado para representar las fechas (por ejemplo, Date, String, etc.)
+*/
 package modelo;
 
 import java.io.BufferedWriter;
@@ -12,8 +21,12 @@ public class RegistroFechas<T> {
 	private String tituloLibro;
 	private String archivoRegistros = "src/documentos/historial.txt";
 
+	/**
+	 * 
+	 * Constructor de la clase RegistroFechas.
+	 */
 	public RegistroFechas() {
-		
+
 	}
 
 	public T getFechaPedido() {
@@ -39,6 +52,16 @@ public class RegistroFechas<T> {
 	public String getTituloLibro() {
 		return tituloLibro;
 	}
+
+	/**
+	 * 
+	 * Guarda un registro en el archivo de historial.
+	 * 
+	 * @param cliente         el cliente asociado al registro
+	 * @param tituloLibro     el título del libro asociado al registro
+	 * @param fechaPedido     la fecha de pedido
+	 * @param fechaDevolucion la fecha de devolución
+	 */
 
 	public void guardarRegistro(String cliente, String tituloLibro, String fechaPedido, String fechaDevolucion) {
 		try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoRegistros, true))) {
