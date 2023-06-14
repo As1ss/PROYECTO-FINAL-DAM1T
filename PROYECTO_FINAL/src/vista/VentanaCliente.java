@@ -10,8 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JToolBar;
+import javax.swing.ListSelectionModel;
+
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+
 import javax.swing.JLabel;
 import javax.swing.JList;
 
@@ -35,6 +39,11 @@ public class VentanaCliente extends JDialog {
 	private JLabel labelEstadoDevolver;
 	private JButton btnDevolver;
 	private CardLayout cardLayout;
+	private JList listPedido;
+	private DefaultListModel<String> listModelPedido;
+	private JScrollPane scrollPanePedido;
+	private JList listDevolucion;
+	private DefaultListModel<String> listModelDevolucion;
 
 	public VentanaCliente() {
 		setBounds(100, 100, 450, 300);
@@ -93,11 +102,18 @@ public class VentanaCliente extends JDialog {
 				btnPedir = new JButton("Pedir");
 				btnPedir.setBounds(78, 169, 66, 23);
 				panelPedido.add(btnPedir);
-				DefaultListModel<String> listModelPedido = new DefaultListModel<>();
-				JList<String> listPedido = new JList<>(listModelPedido);
-				listPedido.setBounds(33, 22, 146, 125);
-				JScrollPane scrollPanePedido = new JScrollPane(listPedido);
-				panelPedido.add(listPedido);
+				{
+					listModelPedido = new DefaultListModel<>();
+					listPedido = new JList(listModelPedido);
+					listPedido.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					listPedido.setEnabled(true);
+					listPedido.setBounds(26, 35, 99, 137);
+					scrollPanePedido = new JScrollPane(listPedido);
+					scrollPanePedido.setBounds(22, 11, 176, 150);
+					scrollPanePedido.setPreferredSize(new Dimension(200, 150));
+					panelPedido.add(scrollPanePedido);
+				}
+
 			}
 			{
 				JPanel panelDevolucion = new JPanel();
@@ -111,36 +127,80 @@ public class VentanaCliente extends JDialog {
 				}
 				{
 					btnDevolver = new JButton("Devolver");
-					btnDevolver.setBounds(57, 164, 82, 23);
+					btnDevolver.setBounds(60, 168, 93, 23);
 					panelDevolucion.add(btnDevolver);
 				}
 				{
 					labelTituloDevolver = new JLabel("Ttulo: ");
-					labelTituloDevolver.setBounds(222, 23, 177, 14);
+					labelTituloDevolver.setBounds(237, 22, 177, 14);
 					panelDevolucion.add(labelTituloDevolver);
 				}
 				{
 					labelEditorialDevolver = new JLabel("Editorial:");
-					labelEditorialDevolver.setBounds(222, 96, 177, 14);
+					labelEditorialDevolver.setBounds(237, 95, 177, 14);
 					panelDevolucion.add(labelEditorialDevolver);
 				}
 				{
 					labelAutorDevolver = new JLabel("Autor: ");
-					labelAutorDevolver.setBounds(222, 58, 177, 14);
+					labelAutorDevolver.setBounds(237, 57, 177, 14);
 					panelDevolucion.add(labelAutorDevolver);
 				}
 				{
 					labelEjemplaresDevolver = new JLabel("Ejemplares: ");
-					labelEjemplaresDevolver.setBounds(222, 133, 177, 14);
+					labelEjemplaresDevolver.setBounds(237, 132, 177, 14);
 					panelDevolucion.add(labelEjemplaresDevolver);
 				}
 				{
 					labelEstadoDevolver = new JLabel("Estado: ");
-					labelEstadoDevolver.setBounds(222, 173, 177, 14);
+					labelEstadoDevolver.setBounds(237, 172, 177, 14);
 					panelDevolucion.add(labelEstadoDevolver);
+				}
+				{
+					
+					listModelDevolucion = new DefaultListModel<>();
+					listDevolucion = new JList(listModelDevolucion);
+					listDevolucion.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+					listDevolucion.setEnabled(true);
+					listDevolucion.setBounds(26, 35, 99, 137);
+					JScrollPane scrollPaneDevolucion = new JScrollPane(listDevolucion);
+					scrollPaneDevolucion.setBounds(22, 11, 176, 150);
+					scrollPaneDevolucion.setPreferredSize(new Dimension(200, 150));
+					panelDevolucion.add(scrollPaneDevolucion);
 				}
 			}
 		}
+	}
+
+	public JList getListDevolucion() {
+		return listDevolucion;
+	}
+
+	public void setListDevolucion(JList listDevolucion) {
+		this.listDevolucion = listDevolucion;
+	}
+
+	public DefaultListModel<String> getListModelDevolucion() {
+		return listModelDevolucion;
+	}
+
+	public void setListModelDevolucion(DefaultListModel<String> listModelDevolucion) {
+		this.listModelDevolucion = listModelDevolucion;
+	}
+
+	public JList getListPedido() {
+		return listPedido;
+	}
+
+	public void setListPedido(JList listPedido) {
+		this.listPedido = listPedido;
+	}
+
+	public DefaultListModel<String> getListModelPedido() {
+		return listModelPedido;
+	}
+
+	public void setListModelPedido(DefaultListModel<String> listModelPedido) {
+		this.listModelPedido = listModelPedido;
 	}
 
 	public CardLayout getCardLayout() {

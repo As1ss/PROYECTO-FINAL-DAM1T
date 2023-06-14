@@ -168,7 +168,7 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 	}
 
 	public void añadirCategoriasJCombo() {
-
+	
 		for (int i = 0; i < operacionesAdmin.getOpciones().length; i++) {
 			ventanaAdmin.getComboBoxModificar().addItem(operacionesAdmin.getOpciones()[i]);
 			ventanaAdmin.getComboBox().addItem(operacionesAdmin.getOpciones()[i]);

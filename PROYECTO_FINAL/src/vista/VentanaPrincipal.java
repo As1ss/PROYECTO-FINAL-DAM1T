@@ -19,7 +19,6 @@ public class VentanaPrincipal extends JFrame {
 	private JPanel contentPane;
 	private JPasswordField contraseñaTexto;
 	private JTextField aliasTexto;
-
 	private JButton botonInicioSesion;
 	private JLabel inicioLabel;
 	private JButton botonRegistro;

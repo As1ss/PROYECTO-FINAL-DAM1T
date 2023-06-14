@@ -17,9 +17,14 @@ public class OperacionesUsuario {
 	private File file;
 
 	public OperacionesUsuario() {
+		
 		file = new File(archivoUsuarios);
 		usuarios = cargarUsuarios();
 
+		// Verificar si el usuario "Admin" ya existe
+		if (!usuarios.containsKey("Admin")) {
+			agregarUsuario("Admin", "1234", "", "");
+		}
 	}
 
 	public HashMap<String, Usuario> cargarUsuarios() {
@@ -50,7 +55,16 @@ public class OperacionesUsuario {
 	}
 
 	public void guardarUsuarios() {
-		agregarUsuario("Admin", "1234", "", "");
+
+		// Asignar el estado actualizado de disponibilidadPrestamo y libroPrestado a
+		// cada usuario
+		for (Usuario usuario : usuarios.values()) {
+			if (usuario.getLibroPrestado() != null) {
+				usuario.setDisponibilidadPrestamo(false);
+			} else {
+				usuario.setDisponibilidadPrestamo(true);
+			}
+		}
 
 		try {
 			FileOutputStream fileOutputStream = new FileOutputStream(file);
@@ -58,10 +72,10 @@ public class OperacionesUsuario {
 
 			objectOutputStream.writeObject(usuarios);
 			objectOutputStream.close();
+			System.out.println("Usuarios guardados exitosamente.");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void agregarUsuario(String alias, String contraseña, String nombre, String direccion) {
