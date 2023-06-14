@@ -3,6 +3,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
@@ -27,14 +28,14 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 	private Usuario usu;
 	RegistroFechas registroF;
 
-	public ControladorVentanaCliente(Usuario usu,OperacionesUsuario operacionesUsu) {
+	public ControladorVentanaCliente(Usuario usu, OperacionesUsuario operacionesUsu) {
 		this.usu = usu;
-		this.operacionesUsu=operacionesUsu;
+		this.operacionesUsu = operacionesUsu;
 		registroF = new RegistroFechas();
 		operacionesAdmin = new OperacionesAdministrador();
-		operacionesCli = new OperacionesCliente(operacionesAdmin,operacionesUsu);
+		operacionesCli = new OperacionesCliente(operacionesAdmin, operacionesUsu);
 		ventanaCli = new VentanaCliente();
-		ventanaCli.setTitle("Usuario: "+usu.getAlias());
+		ventanaCli.setTitle("Usuario: " + usu.getAlias());
 		ventanaCli.getBtnDevolucion().addActionListener(this);
 		ventanaCli.getBtnDevolver().addActionListener(this);
 		ventanaCli.getBtnPedido().addActionListener(this);
@@ -71,15 +72,14 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 						operacionesCli.cogerLibro(entry.getKey(), usu);
 						operacionesUsu.guardarUsuarios();
 						JOptionPane.showMessageDialog(ventanaCli, "Libro " + libro.getTitulo() + " pedido.");
-						registroF.guardarRegistro(usu.getAlias(), libro.getTitulo(), String.valueOf(LocalDate.now()),
-								"");
+						registroF.guardarRegistro(usu.getAlias(), libro.getTitulo(),
+								String.valueOf(LocalDateTime.now()), "");
 
 					}
 				}
 			} else {
 				JOptionPane.showMessageDialog(ventanaCli, "No puedes coger el libro ya que posees uno actualmente.");
 			}
-			
 
 		}
 		if (e.getSource() == ventanaCli.getBtnDevolver()) {
@@ -92,14 +92,13 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 						operacionesUsu.guardarUsuarios();
 						JOptionPane.showMessageDialog(ventanaCli, "Libro " + libro.getTitulo() + " devuelto.");
 						registroF.guardarRegistro(usu.getAlias(), libro.getTitulo(), "",
-								String.valueOf(LocalDate.now()));
+								String.valueOf(LocalDateTime.now()));
 						break; // Se encontró el libro, se sale del bucle
 					}
 				}
 			} else {
 				JOptionPane.showMessageDialog(ventanaCli, "No tienes libros para devolver.");
 			}
-			
 
 		}
 	}
@@ -115,7 +114,7 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 		ventanaCli.getListModelDevolucion().removeAllElements();
 		if (usu.getLibroPrestado() != null) {
 			ventanaCli.getListModelDevolucion().addElement(usu.getLibroPrestado().getTitulo());
-		
+
 		} else {
 			ventanaCli.getListModelDevolucion().addElement("No tienes libros en tu posesión");
 			ventanaCli.getLabelTituloDevolver().setText("Titulo: ");
