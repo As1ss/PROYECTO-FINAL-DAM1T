@@ -5,11 +5,13 @@ import java.util.HashMap;
 public class OperacionesCliente {
 	private OperacionesAdministrador operaciones;
 	OperacionesUsuario operacionesUsu;
+
 	
 
 	public OperacionesCliente(OperacionesAdministrador operaciones) {
 		this.operaciones = operaciones;
 		operacionesUsu = new OperacionesUsuario();
+		this.operaciones=operaciones;
 
 	}
 
@@ -20,6 +22,7 @@ public class OperacionesCliente {
 			usuario.agregarLibroPrestado(libro);
 			System.out.println("El libro ha sido cogido por el cliente.");
 			operacionesUsu.guardarUsuarios();
+			operaciones.guardarLibros();
 
 		} else {
 			System.out.println("El libro no está disponible para préstamo.");
@@ -32,6 +35,7 @@ public class OperacionesCliente {
 			libro.setEjemplares(libro.getEjemplares() + 1);
 			usuario.eliminarLibroPrestado();
 			System.out.println("El libro ha sido devuelto por el cliente.");
+			operaciones.guardarLibros();
 		} else {
 			System.out.println("El cliente no tiene prestado ese libro.");
 		}

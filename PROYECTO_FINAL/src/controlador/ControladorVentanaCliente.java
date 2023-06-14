@@ -35,7 +35,7 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 		operacionesAdmin = new OperacionesAdministrador();
 		operacionesCli = new OperacionesCliente(operacionesAdmin);
 		ventanaCli = new VentanaCliente();
-		ventanaCli.setTitle("cliente");
+		ventanaCli.setTitle("Usuario: "+usu.getAlias());
 		ventanaCli.getBtnDevolucion().addActionListener(this);
 		ventanaCli.getBtnDevolver().addActionListener(this);
 		ventanaCli.getBtnPedido().addActionListener(this);
@@ -53,12 +53,15 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 		if (e.getSource() == ventanaCli.getBtnDevolucion()) {
 
 			ventanaCli.getCardLayout().show(ventanaCli.getPanelGeneral(), "panelDevolucion");
+			agregarLibrosPedido();
 			agregarLibrosDevolucion();
 
 		}
 		if (e.getSource() == ventanaCli.getBtnPedido()) {
 
 			ventanaCli.getCardLayout().show(ventanaCli.getPanelGeneral(), "panelPedido");
+			agregarLibrosPedido();
+			agregarLibrosDevolucion();
 		}
 		if (e.getSource() == ventanaCli.getBtnPedir()) {
 			String valor = (String) ventanaCli.getListPedido().getSelectedValue();
@@ -77,7 +80,7 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 			} else {
 				JOptionPane.showMessageDialog(ventanaCli, "No puedes coger el libro ya que posees uno actualmente.");
 			}
-			System.out.println(usu.getLibroPrestado().getTitulo());
+			
 
 		}
 		if (e.getSource() == ventanaCli.getBtnDevolver()) {
@@ -97,7 +100,7 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 			} else {
 				JOptionPane.showMessageDialog(ventanaCli, "No tienes libros para devolver.");
 			}
-			System.out.println(usu.getLibroPrestado());
+			
 
 		}
 	}
@@ -116,6 +119,11 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 		
 		} else {
 			ventanaCli.getListModelDevolucion().addElement("No tienes libros en tu posesión");
+			ventanaCli.getLabelTituloDevolver().setText("Titulo: ");
+			ventanaCli.getLabelAutorDevolver().setText("Autor: ");
+			ventanaCli.getLabelEditorialDevolver().setText("Editorial: ");
+			ventanaCli.getLabelEjemplaresDevolver().setText("Ejemplares: ");
+			ventanaCli.getLabelEstadoDevolver().setText("Estado: ");
 		}
 	}
 

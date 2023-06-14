@@ -26,13 +26,12 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 	public ControladorVentanaPrincipal() {
 		operacionesUsu = new OperacionesUsuario();
 		ventana = new VentanaPrincipal();
-		ventana.setTitle("VentanaPrincipal");
+		ventana.setTitle("Inicio de sesión");
 		añadirTextosPredefinidos();
 		ventana.getAliasTexto().addMouseListener(this);
 		ventana.getContraseñaTexto().addMouseListener(this);
 		ventana.getBotonInicioSesion().addActionListener(this);
 		ventana.getBotonRegistro().addActionListener(this);
-	
 		ventana.setVisible(true);
 	}
 
@@ -52,11 +51,9 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 			HashMap<String, Usuario> usuariosAlmacenados = operacionesUsu.getListaUsuarios();
 			// Verificar la autenticación del usuario
 			Usuario usuario = usuariosAlmacenados.get(alias);
-			System.out.println(usuario.getDisponibilidadPrestamo());
 			if (usuario != null && usuario.getContraseña().equals(contraseña)) {
 				// Iniciar la nueva ventana aquí
-				// Puede variar segun las credenciales sean de Administración o cualesquiera
-				// otras
+				// Puede variar segun las credenciales sean de Administración o usuarios clientes
 				JOptionPane.showMessageDialog(null, "Bienvenid@ " + usuario.getAlias());
 				if (usuario.getAlias().equalsIgnoreCase("Admin") && usuario.getContraseña().equalsIgnoreCase("1234")) {
 					try {
