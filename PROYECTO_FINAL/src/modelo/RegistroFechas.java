@@ -10,12 +10,10 @@ public class RegistroFechas<T> {
 	private T fechaDevolucion;
 	private String cliente;
 	private String tituloLibro;
+	private String archivoRegistros = "src/documentos/historial.txt";
 
-	public RegistroFechas(String cliente, String tituloLibro, T fechaPedido, T fechaDevolucion) {
-		this.cliente = cliente;
-		this.tituloLibro = tituloLibro;
-		this.fechaPedido = fechaPedido;
-		this.fechaDevolucion = fechaDevolucion;
+	public RegistroFechas() {
+		
 	}
 
 	public T getFechaPedido() {
@@ -42,21 +40,20 @@ public class RegistroFechas<T> {
 		return tituloLibro;
 	}
 
-	public void guardarInformacion() {
-		String nombreArchivo = cliente + "_" + tituloLibro + ".txt";
-
-		try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
+	public void guardarRegistro(String cliente, String tituloLibro, String fechaPedido, String fechaDevolucion) {
+		try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoRegistros, true))) {
 			writer.write("Cliente: " + cliente);
 			writer.newLine();
 			writer.write("Título del libro: " + tituloLibro);
 			writer.newLine();
-			writer.write("Fecha de pedido: " + fechaPedido.toString());
+			writer.write("Fecha de pedido: " + fechaPedido);
 			writer.newLine();
-			writer.write("Fecha de devolución: " + fechaDevolucion.toString());
+			writer.write("Fecha de devolución: " + fechaDevolucion);
 			writer.newLine();
-			System.out.println("La información se ha guardado correctamente en el archivo: " + nombreArchivo);
+			writer.newLine();
+			writer.flush();
 		} catch (IOException e) {
-			System.out.println("Error al guardar la información en el archivo: " + e.getMessage());
+			System.out.println("Error al guardar el registro en el archivo de historial: " + e.getMessage());
 		}
 	}
 }

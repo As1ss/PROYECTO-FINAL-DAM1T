@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class OperacionesCliente {
 	private OperacionesAdministrador operaciones;
 	OperacionesUsuario operacionesUsu;
+	
 
 	public OperacionesCliente(OperacionesAdministrador operaciones) {
 		this.operaciones = operaciones;
