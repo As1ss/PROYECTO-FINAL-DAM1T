@@ -113,7 +113,7 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 		ventanaCli.getListModelDevolucion().removeAllElements();
 		if (usu.getLibroPrestado() != null) {
 			ventanaCli.getListModelDevolucion().addElement(usu.getLibroPrestado().getTitulo());
-			System.out.println(usu.getLibroPrestado().getTitulo());
+		
 		} else {
 			ventanaCli.getListModelDevolucion().addElement("No tienes libros en tu posesión");
 		}
