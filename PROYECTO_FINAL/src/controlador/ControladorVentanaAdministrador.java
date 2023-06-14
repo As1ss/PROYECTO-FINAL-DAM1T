@@ -1,13 +1,17 @@
 package controlador;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -37,10 +41,13 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 		ventanaAdmin.getListModificar().addListSelectionListener(this);
 		ventanaAdmin.getBotonBorrarModificar().addActionListener(this);
 		ventanaAdmin.getBotonGuardarModificar().addActionListener(this);
+		ventanaAdmin.getBtnLimpiar().addActionListener(this);
+		ventanaAdmin.getBtnSelectImagen().addActionListener(this);
 		ventanaAdmin.setVisible(true);
 		agregarLibrosConsulta();
 		agregarLibrosModificar();
 		añadirCategoriasJCombo();
+		ventanaAdmin.getBtnLimpiar().doClick();
 
 	}
 
@@ -52,7 +59,7 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 		}
 		if (e.getSource() == ventanaAdmin.getBotonAñadir()) {
 			ventanaAdmin.getCardLayout().show(ventanaAdmin.getPanelPrincipal(), "panelAñadir");
-			operacionesAdmin.mostrarLibros();
+			
 		}
 		if (e.getSource() == ventanaAdmin.getBotonModificar()) {
 			ventanaAdmin.getCardLayout().show(ventanaAdmin.getPanelPrincipal(), "panelModificar");
@@ -115,6 +122,30 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 			agregarLibrosModificar();
 
 		}
+		if (e.getSource() == ventanaAdmin.getBtnLimpiar()) {
+			ventanaAdmin.getTftTitulo().setText("");
+			ventanaAdmin.getTftAutor().setText("");
+			ventanaAdmin.getTftEditorial().setText("");
+			ventanaAdmin.getTftEjemplares().setText("");
+			ventanaAdmin.getComboBox().setSelectedItem("Nuevo");
+			ImageIcon imagen = new ImageIcon("src/images/default.png");
+			ImageIcon imagenRedimensionada = redimensionarImagen(imagen, 122, 142);
+			ventanaAdmin.getImagenLibroAñadir().setIcon(imagenRedimensionada);
+		}
+		if (e.getSource() == ventanaAdmin.getBtnSelectImagen()) {
+
+			JFileChooser seleccionImg = new JFileChooser();
+			int resultado = seleccionImg.showOpenDialog(null);
+
+			if (resultado == JFileChooser.APPROVE_OPTION) {
+				File archivoSeleccionado = seleccionImg.getSelectedFile();
+				String direccionImagen = archivoSeleccionado.getAbsolutePath();
+				ImageIcon imagen = new ImageIcon(direccionImagen);
+				ImageIcon imagenRedimensionada = redimensionarImagen(imagen, 122, 142);
+				ventanaAdmin.getImagenLibroAñadir().setIcon(imagenRedimensionada);
+
+			}
+		}
 	}
 
 	public void valueChanged(ListSelectionEvent e) {
@@ -168,12 +199,19 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 	}
 
 	public void añadirCategoriasJCombo() {
-	
+
 		for (int i = 0; i < operacionesAdmin.getOpciones().length; i++) {
 			ventanaAdmin.getComboBoxModificar().addItem(operacionesAdmin.getOpciones()[i]);
 			ventanaAdmin.getComboBox().addItem(operacionesAdmin.getOpciones()[i]);
 
 		}
+	}
+
+	public ImageIcon redimensionarImagen(ImageIcon icon, int ancho, int alto) {
+		Image imagen = icon.getImage();
+		Image redimension = imagen.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
+		return new ImageIcon(redimension);
+
 	}
 
 }

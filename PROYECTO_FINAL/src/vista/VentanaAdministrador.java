@@ -92,22 +92,27 @@ public class VentanaAdministrador extends JFrame {
 		panelConsulta.setLayout(null);
 
 		labelTitulo = new JLabel("Titulo: ");
+		labelTitulo.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelTitulo.setBounds(222, 23, 177, 14);
 		panelConsulta.add(labelTitulo);
 
 		labelEditorial = new JLabel("Editorial:");
+		labelEditorial.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelEditorial.setBounds(222, 96, 177, 14);
 		panelConsulta.add(labelEditorial);
 
 		labelAutor = new JLabel("Autor: ");
+		labelAutor.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelAutor.setBounds(222, 58, 177, 14);
 		panelConsulta.add(labelAutor);
 
 		labelEjemplares = new JLabel("Ejemplares: ");
+		labelEjemplares.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelEjemplares.setBounds(222, 133, 177, 14);
 		panelConsulta.add(labelEjemplares);
 
 		labelEstado = new JLabel("Estado: ");
+		labelEstado.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		labelEstado.setBounds(222, 173, 177, 14);
 		panelConsulta.add(labelEstado);
 
@@ -134,19 +139,23 @@ public class VentanaAdministrador extends JFrame {
 		panelAñadir.add(imagenLibroAñadir);
 
 		labelTituloAñadir = new JLabel("Título: ");
-		labelTituloAñadir.setBounds(217, 23, 177, 14);
+		labelTituloAñadir.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelTituloAñadir.setBounds(192, 6, 83, 14);
 		panelAñadir.add(labelTituloAñadir);
 
 		labelEditorialAñadir = new JLabel("Editorial:");
-		labelEditorialAñadir.setBounds(217, 73, 177, 14);
+		labelEditorialAñadir.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelEditorialAñadir.setBounds(191, 77, 83, 14);
 		panelAñadir.add(labelEditorialAñadir);
 
 		labelAutorAñadir = new JLabel("Autor: ");
-		labelAutorAñadir.setBounds(217, 48, 177, 14);
+		labelAutorAñadir.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelAutorAñadir.setBounds(192, 42, 83, 14);
 		panelAñadir.add(labelAutorAñadir);
 
 		labelEjemplaresAñadir = new JLabel("Ejemplares: ");
-		labelEjemplaresAñadir.setBounds(217, 98, 177, 14);
+		labelEjemplaresAñadir.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelEjemplaresAñadir.setBounds(192, 111, 83, 14);
 		panelAñadir.add(labelEjemplaresAñadir);
 
 		btnSelectImagen = new JButton("Seleccionar imagen");
@@ -163,49 +172,45 @@ public class VentanaAdministrador extends JFrame {
 		btnGuardar.setBounds(325, 173, 89, 34);
 		panelAñadir.add(btnGuardar);
 
-		btnLimpiar = new JButton("");
-		btnLimpiar.setIcon(new ImageIcon(VentanaAdministrador.class.getResource("/images/Limpiar.png")));
-		btnLimpiar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-
-				tftTitulo.setText("");
-				tftAutor.setText("");
-				tftEditorial.setText("");
-				tftEjemplares.setText("");
-
-			}
-		});
-		btnLimpiar.setBounds(284, 173, 35, 34);
+		btnLimpiar = new JButton("Limpiar");
+		
+		
+		btnLimpiar.setBounds(236, 173, 83, 34);
 		panelAñadir.add(btnLimpiar);
 
 		tftTitulo = new JTextField();
-		tftTitulo.setBounds(256, 20, 138, 20);
+		tftTitulo.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		tftTitulo.setBounds(263, 0, 133, 29);
 		panelAñadir.add(tftTitulo);
 		tftTitulo.setColumns(10);
 
 		tftAutor = new JTextField();
+		tftAutor.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		tftAutor.setColumns(10);
-		tftAutor.setBounds(256, 45, 138, 20);
+		tftAutor.setBounds(262, 37, 134, 28);
 		panelAñadir.add(tftAutor);
 
 		tftEditorial = new JTextField();
+		tftEditorial.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		tftEditorial.setColumns(10);
-		tftEditorial.setBounds(276, 70, 118, 20);
+		tftEditorial.setBounds(263, 73, 133, 29);
 		panelAñadir.add(tftEditorial);
 
 		tftEjemplares = new JTextField();
+		tftEjemplares.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		tftEjemplares.setColumns(10);
-		tftEjemplares.setBounds(298, 95, 96, 20);
+		tftEjemplares.setBounds(298, 105, 96, 28);
 		panelAñadir.add(tftEjemplares);
 
 		lblNewLabel = new JLabel("Estado: ");
-		lblNewLabel.setBounds(217, 123, 46, 14);
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(192, 139, 83, 14);
 		panelAñadir.add(lblNewLabel);
 
 		
 
 		comboBox = new JComboBox();
-		comboBox.setBounds(276, 119, 118, 22);
+		comboBox.setBounds(276, 140, 118, 22);
 		panelAñadir.add(comboBox);
 
 		panelModificar = new JPanel();
@@ -214,19 +219,23 @@ public class VentanaAdministrador extends JFrame {
 		panelPrincipal.add(panelModificar, "panelModificar");
 
 		labelTituloAñadir_1 = new JLabel("T\u00EDtulo: ");
-		labelTituloAñadir_1.setBounds(217, 23, 66, 14);
+		labelTituloAñadir_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelTituloAñadir_1.setBounds(205, 6, 83, 14);
 		panelModificar.add(labelTituloAñadir_1);
 
 		labelEditorialAñadir_1 = new JLabel("Editorial:");
-		labelEditorialAñadir_1.setBounds(217, 73, 77, 14);
+		labelEditorialAñadir_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelEditorialAñadir_1.setBounds(205, 77, 83, 14);
 		panelModificar.add(labelEditorialAñadir_1);
 
 		labelAutorAñadir_1 = new JLabel("Autor: ");
-		labelAutorAñadir_1.setBounds(217, 48, 66, 14);
+		labelAutorAñadir_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelAutorAñadir_1.setBounds(205, 42, 83, 14);
 		panelModificar.add(labelAutorAñadir_1);
 
 		labelEjemplaresAñadir_1 = new JLabel("Ejemplares: ");
-		labelEjemplaresAñadir_1.setBounds(217, 98, 77, 14);
+		labelEjemplaresAñadir_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		labelEjemplaresAñadir_1.setBounds(205, 111, 83, 14);
 		panelModificar.add(labelEjemplaresAñadir_1);
 
 		botonGuardarModificar = new JButton("Guardar");
@@ -238,31 +247,36 @@ public class VentanaAdministrador extends JFrame {
 		panelModificar.add(botonBorrarModificar);
 
 		textoTituloModificar = new JTextField();
+		textoTituloModificar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textoTituloModificar.setColumns(10);
-		textoTituloModificar.setBounds(256, 20, 138, 20);
+		textoTituloModificar.setBounds(263, 0, 133, 28);
 		panelModificar.add(textoTituloModificar);
 
 		textoAutorModificar = new JTextField();
+		textoAutorModificar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textoAutorModificar.setColumns(10);
-		textoAutorModificar.setBounds(256, 45, 138, 20);
+		textoAutorModificar.setBounds(262, 37, 134, 28);
 		panelModificar.add(textoAutorModificar);
 
 		textoEditorialModificar = new JTextField();
+		textoEditorialModificar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textoEditorialModificar.setColumns(10);
-		textoEditorialModificar.setBounds(276, 70, 118, 20);
+		textoEditorialModificar.setBounds(263, 73, 133, 29);
 		panelModificar.add(textoEditorialModificar);
 
 		textoEjemplaresModificar = new JTextField();
+		textoEjemplaresModificar.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textoEjemplaresModificar.setColumns(10);
-		textoEjemplaresModificar.setBounds(298, 95, 96, 20);
+		textoEjemplaresModificar.setBounds(298, 105, 96, 28);
 		panelModificar.add(textoEjemplaresModificar);
 
 		lblNewLabel_1 = new JLabel("Estado: ");
-		lblNewLabel_1.setBounds(217, 123, 46, 14);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(205, 142, 83, 14);
 		panelModificar.add(lblNewLabel_1);
 
 		comboBoxModificar = new JComboBox(new Object[] {});
-		comboBoxModificar.setBounds(276, 119, 118, 22);
+		comboBoxModificar.setBounds(276, 140, 118, 22);
 		panelModificar.add(comboBoxModificar);
 		
 
@@ -271,6 +285,7 @@ public class VentanaAdministrador extends JFrame {
 
 		listModelModificar = new DefaultListModel<>();
 		listModificar = new JList<>(listModelModificar);
+		listModificar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		listModificar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listModificar.setEnabled(true);
 		listModificar.setBounds(22, 35, 99, 137);
@@ -291,6 +306,10 @@ public class VentanaAdministrador extends JFrame {
 		panelBotones.add(botonModificar);
 		contentPane.add(panelBotones, BorderLayout.NORTH);
 
+	}
+
+	public void setImagenLibroAñadir(JLabel imagenLibroAñadir) {
+		this.imagenLibroAñadir = imagenLibroAñadir;
 	}
 
 	public JButton getBotonGuardarModificar() {

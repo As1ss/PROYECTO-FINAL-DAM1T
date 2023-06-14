@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import modelo.Libro;
 import modelo.OperacionesAdministrador;
@@ -16,7 +18,7 @@ import modelo.RegistroFechas;
 import modelo.Usuario;
 import vista.VentanaCliente;
 
-public class ControladorVentanaCliente implements ActionListener {
+public class ControladorVentanaCliente implements ActionListener, ListSelectionListener {
 
 	VentanaCliente ventanaCli;
 	OperacionesCliente operacionesCli;
@@ -38,6 +40,8 @@ public class ControladorVentanaCliente implements ActionListener {
 		ventanaCli.getBtnDevolver().addActionListener(this);
 		ventanaCli.getBtnPedido().addActionListener(this);
 		ventanaCli.getBtnPedir().addActionListener(this);
+		ventanaCli.getListPedido().addListSelectionListener(this);
+		ventanaCli.getListDevolucion().addListSelectionListener(this);
 		ventanaCli.setVisible(true);
 		agregarLibrosPedido();
 		agregarLibrosDevolucion();
@@ -113,6 +117,37 @@ public class ControladorVentanaCliente implements ActionListener {
 		} else {
 			ventanaCli.getListModelDevolucion().addElement("No tienes libros en tu posesión");
 		}
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		if (e.getSource() == ventanaCli.getListPedido()) {
+			String selectedValue = (String) ventanaCli.getListPedido().getSelectedValue();
+
+			for (Libro libro : operacionesAdmin.getListaLibros().values()) {
+				if (libro.getTitulo().equals(selectedValue)) {
+					ventanaCli.getLabelTituloPedir().setText("Titulo: " + libro.getTitulo());
+					ventanaCli.getLabelAutorPedir().setText("Autor: " + libro.getAutor());
+					ventanaCli.getLabelEditorialPedir().setText("Editorial: " + libro.getEditorial());
+					ventanaCli.getLabelEjemplaresPedir().setText("Ejemplares: " + libro.getEjemplares());
+					ventanaCli.getLabelEstadoPedir().setText("Estado: " + libro.getEstado());
+				}
+			}
+		}
+		if (e.getSource() == ventanaCli.getListDevolucion()) {
+			String selectedValue = (String) ventanaCli.getListDevolucion().getSelectedValue();
+
+			for (Libro libro : operacionesAdmin.getListaLibros().values()) {
+				if (libro.getTitulo().equals(selectedValue)) {
+					ventanaCli.getLabelTituloDevolver().setText("Titulo: " + libro.getTitulo());
+					ventanaCli.getLabelAutorDevolver().setText("Autor: " + libro.getAutor());
+					ventanaCli.getLabelEditorialDevolver().setText("Editorial: " + libro.getEditorial());
+					ventanaCli.getLabelEjemplaresDevolver().setText("Ejemplares: " + libro.getEjemplares());
+					ventanaCli.getLabelEstadoDevolver().setText("Estado: " + libro.getEstado());
+				}
+			}
+		}
+
 	}
 
 }

@@ -18,6 +18,7 @@ import java.awt.Dimension;
 
 import javax.swing.JLabel;
 import javax.swing.JList;
+import java.awt.Font;
 
 public class VentanaCliente extends JDialog {
 
@@ -31,7 +32,6 @@ public class VentanaCliente extends JDialog {
 	private JLabel labelEjemplaresPedir;
 	private JLabel labelEstadoPedir;
 	private JButton btnPedir;
-	private JLabel imagenLibroDevolver;
 	private JLabel labelTituloDevolver;
 	private JLabel labelEditorialDevolver;
 	private JLabel labelAutorDevolver;
@@ -75,26 +75,31 @@ public class VentanaCliente extends JDialog {
 				panelGeneral.add(panelPedido, "panelPedido");
 				{
 					labelTituloPedir = new JLabel("Titulo: ");
+					labelTituloPedir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelTituloPedir.setBounds(237, 23, 177, 14);
 					panelPedido.add(labelTituloPedir);
 				}
 				{
 					labelEditorialPedir = new JLabel("Editorial:");
+					labelEditorialPedir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelEditorialPedir.setBounds(237, 96, 177, 14);
 					panelPedido.add(labelEditorialPedir);
 				}
 				{
 					labelAutorPedir = new JLabel("Autor: ");
+					labelAutorPedir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelAutorPedir.setBounds(237, 58, 177, 14);
 					panelPedido.add(labelAutorPedir);
 				}
 				{
 					labelEjemplaresPedir = new JLabel("Ejemplares: ");
+					labelEjemplaresPedir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelEjemplaresPedir.setBounds(237, 133, 177, 14);
 					panelPedido.add(labelEjemplaresPedir);
 				}
 				{
 					labelEstadoPedir = new JLabel("Estado: ");
+					labelEstadoPedir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelEstadoPedir.setBounds(237, 173, 177, 14);
 					panelPedido.add(labelEstadoPedir);
 				}
@@ -105,6 +110,7 @@ public class VentanaCliente extends JDialog {
 				{
 					listModelPedido = new DefaultListModel<>();
 					listPedido = new JList(listModelPedido);
+					listPedido.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					listPedido.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					listPedido.setEnabled(true);
 					listPedido.setBounds(26, 35, 99, 137);
@@ -121,37 +127,37 @@ public class VentanaCliente extends JDialog {
 				panelDevolucion.setBackground(Color.WHITE);
 				panelGeneral.add(panelDevolucion, "panelDevolucion");
 				{
-					imagenLibroDevolver = new JLabel();
-					imagenLibroDevolver.setBounds(31, 11, 122, 142);
-					panelDevolucion.add(imagenLibroDevolver);
-				}
-				{
 					btnDevolver = new JButton("Devolver");
 					btnDevolver.setBounds(60, 168, 93, 23);
 					panelDevolucion.add(btnDevolver);
 				}
 				{
-					labelTituloDevolver = new JLabel("Ttulo: ");
+					labelTituloDevolver = new JLabel("Titulo: ");
+					labelTituloDevolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelTituloDevolver.setBounds(237, 22, 177, 14);
 					panelDevolucion.add(labelTituloDevolver);
 				}
 				{
 					labelEditorialDevolver = new JLabel("Editorial:");
+					labelEditorialDevolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelEditorialDevolver.setBounds(237, 95, 177, 14);
 					panelDevolucion.add(labelEditorialDevolver);
 				}
 				{
 					labelAutorDevolver = new JLabel("Autor: ");
+					labelAutorDevolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelAutorDevolver.setBounds(237, 57, 177, 14);
 					panelDevolucion.add(labelAutorDevolver);
 				}
 				{
 					labelEjemplaresDevolver = new JLabel("Ejemplares: ");
+					labelEjemplaresDevolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelEjemplaresDevolver.setBounds(237, 132, 177, 14);
 					panelDevolucion.add(labelEjemplaresDevolver);
 				}
 				{
 					labelEstadoDevolver = new JLabel("Estado: ");
+					labelEstadoDevolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					labelEstadoDevolver.setBounds(237, 172, 177, 14);
 					panelDevolucion.add(labelEstadoDevolver);
 				}
@@ -159,6 +165,7 @@ public class VentanaCliente extends JDialog {
 					
 					listModelDevolucion = new DefaultListModel<>();
 					listDevolucion = new JList(listModelDevolucion);
+					listDevolucion.setFont(new Font("Tahoma", Font.PLAIN, 15));
 					listDevolucion.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 					listDevolucion.setEnabled(true);
 					listDevolucion.setBounds(26, 35, 99, 137);
@@ -247,9 +254,6 @@ public class VentanaCliente extends JDialog {
 		return btnPedir;
 	}
 
-	public JLabel getImagenLibroDevolver() {
-		return imagenLibroDevolver;
-	}
 
 	public JLabel getLabelTituloDevolver() {
 		return labelTituloDevolver;

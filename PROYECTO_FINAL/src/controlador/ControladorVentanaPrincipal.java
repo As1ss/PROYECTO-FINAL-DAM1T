@@ -32,6 +32,7 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 		ventana.getContraseñaTexto().addMouseListener(this);
 		ventana.getBotonInicioSesion().addActionListener(this);
 		ventana.getBotonRegistro().addActionListener(this);
+	
 		ventana.setVisible(true);
 	}
 
@@ -56,7 +57,7 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 				// Iniciar la nueva ventana aquí
 				// Puede variar segun las credenciales sean de Administración o cualesquiera
 				// otras
-				JOptionPane.showMessageDialog(null, "INICIO DE SESION SATISFACTORIO.");
+				JOptionPane.showMessageDialog(null, "Bienvenid@ " + usuario.getAlias());
 				if (usuario.getAlias().equalsIgnoreCase("Admin") && usuario.getContraseña().equalsIgnoreCase("1234")) {
 					try {
 						new ControladorVentanaAdministrador();
