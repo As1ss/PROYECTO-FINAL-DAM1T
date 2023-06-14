@@ -59,7 +59,7 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 		}
 		if (e.getSource() == ventanaAdmin.getBotonAñadir()) {
 			ventanaAdmin.getCardLayout().show(ventanaAdmin.getPanelPrincipal(), "panelAñadir");
-			
+
 		}
 		if (e.getSource() == ventanaAdmin.getBotonModificar()) {
 			ventanaAdmin.getCardLayout().show(ventanaAdmin.getPanelPrincipal(), "panelModificar");
@@ -131,6 +131,7 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 			ImageIcon imagen = new ImageIcon("src/images/default.png");
 			ImageIcon imagenRedimensionada = redimensionarImagen(imagen, 122, 142);
 			ventanaAdmin.getImagenLibroAñadir().setIcon(imagenRedimensionada);
+			ventanaAdmin.getLblDirImagen().setText("src/images/default.png");
 		}
 		if (e.getSource() == ventanaAdmin.getBtnSelectImagen()) {
 
@@ -142,6 +143,7 @@ public class ControladorVentanaAdministrador implements ActionListener, ListSele
 				String direccionImagen = archivoSeleccionado.getAbsolutePath();
 				ImageIcon imagen = new ImageIcon(direccionImagen);
 				ImageIcon imagenRedimensionada = redimensionarImagen(imagen, 122, 142);
+				ventanaAdmin.getLblDirImagen().setText(direccionImagen);
 				ventanaAdmin.getImagenLibroAñadir().setIcon(imagenRedimensionada);
 
 			}

@@ -126,8 +126,6 @@ public class VentanaAdministrador extends JFrame {
 		scrollPane.setPreferredSize(new Dimension(200, 200));
 		panelConsulta.add(scrollPane);
 
-
-
 		panelAñadir = new JPanel();
 		panelAñadir.setBackground(Color.WHITE);
 		panelPrincipal.add(panelAñadir, "panelAñadir");
@@ -173,8 +171,7 @@ public class VentanaAdministrador extends JFrame {
 		panelAñadir.add(btnGuardar);
 
 		btnLimpiar = new JButton("Limpiar");
-		
-		
+
 		btnLimpiar.setBounds(236, 173, 83, 34);
 		panelAñadir.add(btnLimpiar);
 
@@ -206,8 +203,6 @@ public class VentanaAdministrador extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNewLabel.setBounds(192, 139, 83, 14);
 		panelAñadir.add(lblNewLabel);
-
-		
 
 		comboBox = new JComboBox();
 		comboBox.setBounds(276, 140, 118, 22);
@@ -278,10 +273,6 @@ public class VentanaAdministrador extends JFrame {
 		comboBoxModificar = new JComboBox(new Object[] {});
 		comboBoxModificar.setBounds(276, 140, 118, 22);
 		panelModificar.add(comboBoxModificar);
-		
-
-
-		
 
 		listModelModificar = new DefaultListModel<>();
 		listModificar = new JList<>(listModelModificar);
@@ -294,7 +285,6 @@ public class VentanaAdministrador extends JFrame {
 		scrollPaneModificar.setPreferredSize(new Dimension(200, 200));
 		panelModificar.add(scrollPaneModificar);
 
-
 		botonConsultar = new JButton("Consultar");
 		botonAñadir = new JButton("A\u00F1adir");
 		botonModificar = new JButton("Modificar");
@@ -306,6 +296,10 @@ public class VentanaAdministrador extends JFrame {
 		panelBotones.add(botonModificar);
 		contentPane.add(panelBotones, BorderLayout.NORTH);
 
+	}
+
+	public void setLblDirImagen(JLabel lblDirImagen) {
+		this.lblDirImagen = lblDirImagen;
 	}
 
 	public void setImagenLibroAñadir(JLabel imagenLibroAñadir) {
@@ -375,9 +369,6 @@ public class VentanaAdministrador extends JFrame {
 	public void setTextoEjemplaresModificar(JTextField textoEjemplaresModificar) {
 		this.textoEjemplaresModificar = textoEjemplaresModificar;
 	}
-
-
-	
 
 	public DefaultListModel<String> getListModel() {
 		return listModel;
