@@ -1,10 +1,35 @@
-Cliente: Cliente1
-Libro: Libro1
-Fecha de pedido: 2023-06-12
-Fecha de devolución: 2023-06-19
+Cliente: Pepito
+Libro: kkk
+Fecha de pedido: 2023-06-14
+Fecha de devolución: null
 
-Cliente: Cliente2
-Libro: Libro12
-Fecha de pedido: 2023-06-12
-Fecha de devolución: 2023-06-22
+Cliente: a
+Título del libro: kkk
+Fecha de pedido: 
+Fecha de devolución: 2023-06-14
+
+Cliente: b
+Título del libro: Tokio Raza
+Fecha de pedido: 2023-06-14
+Fecha de devolución: 
+
+Cliente: b
+Título del libro: Tokio Raza
+Fecha de pedido: 
+Fecha de devolución: 2023-06-14
+
+Cliente: b
+Título del libro: kkk
+Fecha de pedido: 2023-06-14
+Fecha de devolución: 
+
+Cliente: b
+Título del libro: kkk
+Fecha de pedido: 
+Fecha de devolución: 2023-06-14
+
+Cliente: b
+Título del libro: xx
+Fecha de pedido: 2023-06-14
+Fecha de devolución: 
 
