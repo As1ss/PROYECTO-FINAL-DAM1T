@@ -48,9 +48,10 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 			String alias = ventana.getAliasTexto().getText();
 			String contraseña = String.valueOf(ventana.getContraseñaTexto().getPassword());
 			// Obtener la colección de usuarios almacenados en el archivo
-			HashMap<String, Usuario> usuariosAlmacenados = operacionesUsu.cargarUsuarios();
+			HashMap<String, Usuario> usuariosAlmacenados = operacionesUsu.getListaUsuarios();
 			// Verificar la autenticación del usuario
 			Usuario usuario = usuariosAlmacenados.get(alias);
+			System.out.println(usuario.getDisponibilidadPrestamo());
 			if (usuario != null && usuario.getContraseña().equals(contraseña)) {
 				// Iniciar la nueva ventana aquí
 				// Puede variar segun las credenciales sean de Administración o cualesquiera

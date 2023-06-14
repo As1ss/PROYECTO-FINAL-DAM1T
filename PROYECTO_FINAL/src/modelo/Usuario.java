@@ -10,7 +10,9 @@ public class Usuario implements Serializable {
 	private boolean disponibilidadPrestamo;
 	private Libro libroPrestado;
 
+
 	public Usuario(String alias, String contraseña, String nombre, String direccion) {
+		
 		this.alias = alias;
 		this.contraseña = contraseña;
 		this.nombre = nombre;
@@ -22,6 +24,7 @@ public class Usuario implements Serializable {
 	public void agregarLibroPrestado(Libro libro) {
 		this.libroPrestado = libro;
 		disponibilidadPrestamo = false;
+		
 	}
 
 	public void eliminarLibroPrestado() {
