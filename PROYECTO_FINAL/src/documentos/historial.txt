@@ -258,3 +258,33 @@ Título del libro: Libro de la selva
 Fecha de pedido: 
 Fecha de devolución: 2023-06-14
 
+Cliente: As1ss
+Título del libro: Libro de la selva
+Fecha de pedido: 2023-06-14
+Fecha de devolución: 
+
+Cliente: As1ss
+Título del libro: Libro de la selva
+Fecha de pedido: 2023-06-14
+Fecha de devolución: 
+
+Cliente: As1ss
+Título del libro: Libro de la selva
+Fecha de pedido: 
+Fecha de devolución: 2023-06-14
+
+Cliente: As1ss
+Título del libro: Libro de la selva
+Fecha de pedido: 
+Fecha de devolución: 2023-06-14
+
+Cliente: As1ss
+Título del libro: Libro de la selva
+Fecha de pedido: 2023-06-14
+Fecha de devolución: 
+
+Cliente: As1ss
+Título del libro: Libro de la selva
+Fecha de pedido: 
+Fecha de devolución: 2023-06-14
+

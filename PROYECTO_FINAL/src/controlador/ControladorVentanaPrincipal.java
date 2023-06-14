@@ -63,7 +63,7 @@ public class ControladorVentanaPrincipal implements MouseListener, ActionListene
 					}
 				} else {
 					try {
-						new ControladorVentanaCliente(usuario);
+						new ControladorVentanaCliente(usuario,operacionesUsu);
 					} catch (Exception e2) {
 
 					}

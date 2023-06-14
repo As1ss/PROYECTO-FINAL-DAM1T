@@ -27,13 +27,12 @@ public class ControladorVentanaCliente implements ActionListener, ListSelectionL
 	private Usuario usu;
 	RegistroFechas registroF;
 
-	public ControladorVentanaCliente(Usuario usu) {
+	public ControladorVentanaCliente(Usuario usu,OperacionesUsuario operacionesUsu) {
 		this.usu = usu;
-		operacionesUsu = new OperacionesUsuario();
+		this.operacionesUsu=operacionesUsu;
 		registroF = new RegistroFechas();
-		operacionesUsu.cargarUsuarios();
 		operacionesAdmin = new OperacionesAdministrador();
-		operacionesCli = new OperacionesCliente(operacionesAdmin);
+		operacionesCli = new OperacionesCliente(operacionesAdmin,operacionesUsu);
 		ventanaCli = new VentanaCliente();
 		ventanaCli.setTitle("Usuario: "+usu.getAlias());
 		ventanaCli.getBtnDevolucion().addActionListener(this);
